@@ -3,30 +3,6 @@
   "WorkspaceRootPath": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|d:\\corse\\semester6\\software engineering\\project\\project sw\\form3.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|solutionrelative:form3.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|d:\\corse\\semester6\\software engineering\\project\\project sw\\form2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|solutionrelative:form2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|d:\\corse\\semester6\\software engineering\\project\\project sw\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|solutionrelative:form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|d:\\corse\\semester6\\software engineering\\project\\project sw\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|d:\\corse\\semester6\\software engineering\\project\\project sw\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|solutionrelative:form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|d:\\corse\\semester6\\software engineering\\project\\project sw\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|solutionrelative:form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|d:\\corse\\semester6\\software engineering\\project\\project sw\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -38,60 +14,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form3.Designer.cs",
-              "DocumentMoniker": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\Form3.Designer.cs",
-              "RelativeDocumentMoniker": "Form3.Designer.cs",
-              "ToolTip": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\Form3.Designer.cs*",
-              "RelativeToolTip": "Form3.Designer.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-28T21:17:49.008Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Form2.Designer.cs",
-              "DocumentMoniker": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\Form2.Designer.cs",
-              "RelativeDocumentMoniker": "Form2.Designer.cs",
-              "ToolTip": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\Form2.Designer.cs*",
-              "RelativeToolTip": "Form2.Designer.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-28T21:17:46.908Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Form1.Designer.cs",
-              "DocumentMoniker": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\Form1.Designer.cs",
-              "RelativeDocumentMoniker": "Form1.Designer.cs",
-              "ToolTip": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\Form1.Designer.cs*",
-              "RelativeToolTip": "Form1.Designer.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-28T21:17:41.733Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\Form1.cs*",
-              "RelativeToolTip": "Form1.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-28T20:32:20.601Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -102,33 +26,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Form3.cs",
-              "DocumentMoniker": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\Form3.cs",
-              "RelativeDocumentMoniker": "Form3.cs",
-              "ToolTip": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\Form3.cs",
-              "RelativeToolTip": "Form3.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-28T20:32:35.301Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Form2.cs",
-              "DocumentMoniker": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\Form2.cs",
-              "RelativeDocumentMoniker": "Form2.cs",
-              "ToolTip": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\Form2.cs",
-              "RelativeToolTip": "Form2.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAsAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-28T20:32:26.705Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
