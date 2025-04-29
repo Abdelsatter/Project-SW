@@ -16,15 +16,15 @@ namespace Project_SW
 
     public partial class Form1 : Form
     {
-<<<<<<< HEAD
+
         string ordb = "Data Source = orcl;User Id = scott;Password = tiger;";
         OracleConnection conn;
-=======
+
         OracleDataAdapter adapter;
         OracleCommandBuilder commandBuilder;
         DataSet ds;
 
->>>>>>> origin/master
+
         public Form1()
         {
             InitializeComponent(); 
@@ -322,7 +322,7 @@ namespace Project_SW
                     conn.Open();
                     // Check if the email already exists in the database
                     string tableName = Categories.Text;
-                    OracleCommand checkCmd = new OracleCommand("SELECT COUNT(*) FROM Donor WHERE Email = :email", conn);
+                    OracleCommand checkCmd = new OracleCommand($"SELECT COUNT(*) FROM {tableName} WHERE Email = :email", conn);
                     checkCmd.Parameters.Add("email", Email_text.Text);
                     int count = Convert.ToInt32(checkCmd.ExecuteScalar());
                     if (count > 0)
