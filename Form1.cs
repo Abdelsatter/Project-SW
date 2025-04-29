@@ -12,14 +12,23 @@ using Oracle.DataAccess.Types;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Project_SW
-{
+{ 
+
     public partial class Form1 : Form
     {
+<<<<<<< HEAD
         string ordb = "Data Source = orcl;User Id = scott;Password = tiger;";
         OracleConnection conn;
+=======
+        OracleDataAdapter adapter;
+        OracleCommandBuilder commandBuilder;
+        DataSet ds;
+
+>>>>>>> origin/master
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+
         }
 
         
@@ -162,8 +171,55 @@ namespace Project_SW
             {
                 dataGridView.Visible = true;
                 button2.Visible = true;
+                Name_label.Visible = true;
+                Name_text.Visible = true;
                 //show Data Code Here////////////////////////////
+                string constr = "Data source=orcl;user Id=scott;password=tiger;";
+                string cmdstr = "";
+                if (Categories.Text == "Volunteer")
+                {
+                    cmdstr = $"SELECT * FROM Volunteer WHERE name = :name";
 
+                    using (OracleConnection conn = new OracleConnection(constr))
+                    {
+                        OracleCommand cmd = new OracleCommand(cmdstr, conn);
+                        cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
+                    }
+                }   
+                else if(Categories.Text =="Donor")
+                {
+                    cmdstr = $"SELECT * FROM Donor WHERE name = :name";
+
+                    using (OracleConnection conn = new OracleConnection(constr))
+                    {
+                        OracleCommand cmd = new OracleCommand(cmdstr, conn);
+                        cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
+                    }
+                }
+                else if(Categories.Text== "Beneficiary")
+                {
+                    cmdstr = $"SELECT * FROM Beneficiary WHERE name = :name";
+
+                    using (OracleConnection conn = new OracleConnection(constr))
+                    {
+                        OracleCommand cmd = new OracleCommand(cmdstr, conn);
+                        cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
+                    }
+                }
+                else if(Categories.Text =="Admin")
+                {
+                    cmdstr = $"SELECT * FROM Admin WHERE name = :name";
+
+                    using (OracleConnection conn = new OracleConnection(constr))
+                    {
+                        OracleCommand cmd = new OracleCommand(cmdstr, conn);
+                        cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
+                    }
+                }
+                adapter = new OracleDataAdapter(cmdstr, constr);
+                ds=new DataSet();
+                adapter.Fill(ds);
+                dataGridView.DataSource= ds.Tables[0];
 
 
             }
@@ -348,7 +404,8 @@ namespace Project_SW
         private void button2_Click(object sender, EventArgs e)
         {
             //Save Update or Delete Here////////////////////
-
+            commandBuilder = new OracleCommandBuilder(adapter);
+            adapter.Update(ds.Tables[0]);
 
 
         }
