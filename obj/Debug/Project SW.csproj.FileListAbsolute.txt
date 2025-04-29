@@ -1,0 +1,12 @@
+C:\Users\do7aa\OneDrive\Desktop\Project-SW\obj\Debug\Project SW.csproj.AssemblyReference.cache
+C:\Users\do7aa\OneDrive\Desktop\Project-SW\obj\Debug\Project_SW.Form2.resources
+C:\Users\do7aa\OneDrive\Desktop\Project-SW\obj\Debug\Project_SW.Properties.Resources.resources
+C:\Users\do7aa\OneDrive\Desktop\Project-SW\obj\Debug\Project SW.csproj.GenerateResource.cache
+C:\Users\do7aa\OneDrive\Desktop\Project-SW\obj\Debug\Project SW.csproj.CoreCompileInputs.cache
+C:\Users\do7aa\OneDrive\Desktop\Project-SW\bin\Debug\Project SW.exe.config
+C:\Users\do7aa\OneDrive\Desktop\Project-SW\bin\Debug\Project SW.exe
+C:\Users\do7aa\OneDrive\Desktop\Project-SW\bin\Debug\Project SW.pdb
+C:\Users\do7aa\OneDrive\Desktop\Project-SW\bin\Debug\Oracle.DataAccess.dll
+C:\Users\do7aa\OneDrive\Desktop\Project-SW\obj\Debug\Project SW.csproj.Up2Date
+C:\Users\do7aa\OneDrive\Desktop\Project-SW\obj\Debug\Project SW.exe
+C:\Users\do7aa\OneDrive\Desktop\Project-SW\obj\Debug\Project SW.pdb
