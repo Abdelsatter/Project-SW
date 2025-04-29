@@ -15,6 +15,8 @@ namespace Project_SW
 {
     public partial class Form1 : Form
     {
+        string ordb = "Data Source = orcl;User Id = scott;Password = tiger;";
+        OracleConnection conn;
         public Form1()
         {
             InitializeComponent();
@@ -28,7 +30,7 @@ namespace Project_SW
             Date_text.Text = DateTime.Now.ToString("yyyy-MM-dd");             
             Date_text.ReadOnly = true;            
             Date_text.BackColor = SystemColors.Control;
-
+            Phone_text.MaxLength = 11;
             HideVisibility();
 
             UpdateControlVisibility();
@@ -201,7 +203,6 @@ namespace Project_SW
             {
                 bool allFieldsFilled = true;
 
-                
                 if (Categories.Text == "Volunteer")
                 {
                     
@@ -250,15 +251,81 @@ namespace Project_SW
                     }
                 }
 
+                if (!IsPhoneNumberValid(Phone_text.Text))
+                {
+                    MessageBox.Show("Please enter a valid phone number with exactly 11 digits.");
+                    return;
+                }
+
                 // If all fields are filled, show the success message
                 if (allFieldsFilled)
                 {
                     MessageBox.Show("Data Saved Successfully!");
                     //Insert Row Code Here//////////////////////
+                    conn = new OracleConnection(ordb);
+                    conn.Open();
+                    // Check if the email already exists in the database
+                    string tableName = Categories.Text;
+                    OracleCommand checkCmd = new OracleCommand("SELECT COUNT(*) FROM Donor WHERE Email = :email", conn);
+                    checkCmd.Parameters.Add("email", Email_text.Text);
+                    int count = Convert.ToInt32(checkCmd.ExecuteScalar());
+                    if (count > 0)
+                    {
+                        MessageBox.Show("Email already exists.");
+                        return;
+                    }
 
+                    OracleCommand cmd = new OracleCommand();
+                    cmd.Connection = conn;
 
+                    if (Categories.Text == "Donor")
+                    {
+                        cmd.CommandText = "INSERT INTO Donor (Name, Email, Phone_Number, Payment_Method) VALUES (:name, :email, :phone, :payment)";
+                        cmd.Parameters.Add("name", Name_text.Text);
+                        cmd.Parameters.Add("email", Email_text.Text);
+                        cmd.Parameters.Add("phone", Phone_text.Text);
+                        cmd.Parameters.Add("payment", Payment_text.Text);
+                    }
+                    else if (Categories.Text == "Volunteer")
+                    {
+                        cmd.CommandText = "INSERT INTO Volunteer (Name, Email, Phone_Number, Skills, Availability) VALUES (:name, :email, :phone, :skills, :availability)";
+                        cmd.Parameters.Add("name", Name_text.Text);
+                        cmd.Parameters.Add("email", Email_text.Text);
+                        cmd.Parameters.Add("phone", Phone_text.Text);
+                        cmd.Parameters.Add("skills", Skills_text.Text);
+                        cmd.Parameters.Add("availability", Available_text.Text);
+                    }
+                    else if (Categories.Text == "Beneficiary")
+                    {
+                        cmd.CommandText = "INSERT INTO Beneficiary (Name, Email, Phone_Number, Address, Status) VALUES (:name, :email, :phone, :address, :status)";
+                        cmd.Parameters.Add("name", Name_text.Text);
+                        cmd.Parameters.Add("email", Email_text.Text);
+                        cmd.Parameters.Add("phone", Phone_text.Text);
+                        cmd.Parameters.Add("address", Address_text.Text);
+                        cmd.Parameters.Add("status", Status_text.Text);
+                    }
+                    else if (Categories.Text == "Admin")
+                    {
+                        cmd.CommandText = "INSERT INTO Admin (Name, Email, Phone_Number) VALUES (:name, :email, :phone)";
+                        cmd.Parameters.Add("name", Name_text.Text);
+                        cmd.Parameters.Add("email", Email_text.Text);
+                        cmd.Parameters.Add("phone", Phone_text.Text);
+                    }
 
-                }
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Inserted successfully into " + Categories.Text + " table.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Insert failed.");
+                    }
+
+                    conn.Dispose();
+
+            }
                 else
                 {
                     MessageBox.Show("Please fill in all the required fields.");
@@ -269,7 +336,10 @@ namespace Project_SW
                 MessageBox.Show("Please select a category.");
             }
         }
-
+        private bool IsPhoneNumberValid(string phoneNumber)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(phoneNumber, @"^\d{11}$");
+        }
         private void Option_box_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateControlVisibility();
