@@ -10,9 +10,8 @@ C:\Users\do7aa\OneDrive\Desktop\Project-SW\bin\Debug\Oracle.DataAccess.dll
 C:\Users\do7aa\OneDrive\Desktop\Project-SW\obj\Debug\Project SW.csproj.Up2Date
 C:\Users\do7aa\OneDrive\Desktop\Project-SW\obj\Debug\Project SW.exe
 C:\Users\do7aa\OneDrive\Desktop\Project-SW\obj\Debug\Project SW.pdb
-D:\corse\Semester6\Software Engineering\Project\Project SW\bin\Debug\Project SW.exe.config
 D:\corse\Semester6\Software Engineering\Project\Project SW\bin\Debug\Project SW.exe
-D:\corse\Semester6\Software Engineering\Project\Project SW\bin\Debug\Project SW.pdb
+D:\corse\Semester6\Software Engineering\Project\Project SW\bin\Debug\Project SW.exe.config
 D:\corse\Semester6\Software Engineering\Project\Project SW\obj\Debug\Project SW.csproj.AssemblyReference.cache
 D:\corse\Semester6\Software Engineering\Project\Project SW\obj\Debug\Project_SW.Form1.resources
 D:\corse\Semester6\Software Engineering\Project\Project SW\obj\Debug\Project_SW.Form2.resources
@@ -21,3 +20,4 @@ D:\corse\Semester6\Software Engineering\Project\Project SW\obj\Debug\Project SW.
 D:\corse\Semester6\Software Engineering\Project\Project SW\obj\Debug\Project SW.csproj.CoreCompileInputs.cache
 D:\corse\Semester6\Software Engineering\Project\Project SW\obj\Debug\Project SW.exe
 D:\corse\Semester6\Software Engineering\Project\Project SW\obj\Debug\Project SW.pdb
+D:\corse\Semester6\Software Engineering\Project\Project SW\bin\Debug\Project SW.pdb
