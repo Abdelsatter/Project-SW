@@ -68,9 +68,17 @@
             this.D_button = new System.Windows.Forms.Button();
             this.assi_button = new System.Windows.Forms.Button();
             this.ben_button = new System.Windows.Forms.Button();
-            this.S_ID = new System.Windows.Forms.Label();
-            this.ID_combo = new System.Windows.Forms.ComboBox();
+            this.DonorIDTextBox = new System.Windows.Forms.TextBox();
+            this.DonorIDlabel = new System.Windows.Forms.Label();
+            this.GetDonorDetailsButton = new System.Windows.Forms.Button();
+            this.don_name_txt = new System.Windows.Forms.TextBox();
+            this.don_name_lbl = new System.Windows.Forms.Label();
+            this.GetDonorsByPaymentMethodButton = new System.Windows.Forms.Button();
+            this.PaymentMethodTextBox = new System.Windows.Forms.TextBox();
+            this.PaymentMethodlabel = new System.Windows.Forms.Label();
+            this.ID_label = new System.Windows.Forms.Label();
             this.Search_button = new System.Windows.Forms.Button();
+            this.ID_combo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,7 +120,7 @@
             // Name_label
             // 
             this.Name_label.AutoSize = true;
-            this.Name_label.Location = new System.Drawing.Point(342, 22);
+            this.Name_label.Location = new System.Drawing.Point(347, 17);
             this.Name_label.Name = "Name_label";
             this.Name_label.Size = new System.Drawing.Size(44, 16);
             this.Name_label.TabIndex = 3;
@@ -120,7 +128,7 @@
             // 
             // Name_text
             // 
-            this.Name_text.Location = new System.Drawing.Point(404, 19);
+            this.Name_text.Location = new System.Drawing.Point(409, 14);
             this.Name_text.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name_text.Name = "Name_text";
             this.Name_text.Size = new System.Drawing.Size(175, 22);
@@ -284,12 +292,12 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(247, 46);
+            this.dataGridView.Location = new System.Drawing.Point(247, 43);
             this.dataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(539, 379);
+            this.dataGridView.Size = new System.Drawing.Size(539, 295);
             this.dataGridView.TabIndex = 23;
             // 
             // button2
@@ -438,42 +446,126 @@
             this.ben_button.UseVisualStyleBackColor = true;
             this.ben_button.Click += new System.EventHandler(this.ben_button_Click);
             // 
-            // S_ID
+            // DonorIDTextBox
             // 
-            this.S_ID.AutoSize = true;
-            this.S_ID.Location = new System.Drawing.Point(44, 143);
-            this.S_ID.Name = "S_ID";
-            this.S_ID.Size = new System.Drawing.Size(20, 16);
-            this.S_ID.TabIndex = 40;
-            this.S_ID.Text = "ID";
+            this.DonorIDTextBox.Location = new System.Drawing.Point(61, 166);
+            this.DonorIDTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DonorIDTextBox.Name = "DonorIDTextBox";
+            this.DonorIDTextBox.Size = new System.Drawing.Size(127, 22);
+            this.DonorIDTextBox.TabIndex = 40;
             // 
-            // ID_combo
+            // DonorIDlabel
             // 
-            this.ID_combo.FormattingEnabled = true;
-            this.ID_combo.Location = new System.Drawing.Point(109, 143);
-            this.ID_combo.Name = "ID_combo";
-            this.ID_combo.Size = new System.Drawing.Size(121, 24);
-            this.ID_combo.TabIndex = 41;
-            
+            this.DonorIDlabel.AutoSize = true;
+            this.DonorIDlabel.Location = new System.Drawing.Point(88, 146);
+            this.DonorIDlabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DonorIDlabel.Name = "DonorIDlabel";
+            this.DonorIDlabel.Size = new System.Drawing.Size(60, 16);
+            this.DonorIDlabel.TabIndex = 41;
+            this.DonorIDlabel.Text = "Donor ID";
+            // 
+            // GetDonorDetailsButton
+            // 
+            this.GetDonorDetailsButton.Location = new System.Drawing.Point(29, 207);
+            this.GetDonorDetailsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GetDonorDetailsButton.Name = "GetDonorDetailsButton";
+            this.GetDonorDetailsButton.Size = new System.Drawing.Size(191, 49);
+            this.GetDonorDetailsButton.TabIndex = 42;
+            this.GetDonorDetailsButton.Text = "Get Donor Details";
+            this.GetDonorDetailsButton.UseVisualStyleBackColor = true;
+            this.GetDonorDetailsButton.Click += new System.EventHandler(this.GetDonorDetailsButton_Click);
+            // 
+            // don_name_txt
+            // 
+            this.don_name_txt.Location = new System.Drawing.Point(409, 62);
+            this.don_name_txt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.don_name_txt.Name = "don_name_txt";
+            this.don_name_txt.Size = new System.Drawing.Size(175, 22);
+            this.don_name_txt.TabIndex = 43;
+            // 
+            // don_name_lbl
+            // 
+            this.don_name_lbl.AutoSize = true;
+            this.don_name_lbl.Location = new System.Drawing.Point(312, 65);
+            this.don_name_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.don_name_lbl.Name = "don_name_lbl";
+            this.don_name_lbl.Size = new System.Drawing.Size(84, 16);
+            this.don_name_lbl.TabIndex = 44;
+            this.don_name_lbl.Text = "Donor Name";
+            // 
+            // GetDonorsByPaymentMethodButton
+            // 
+            this.GetDonorsByPaymentMethodButton.Location = new System.Drawing.Point(29, 226);
+            this.GetDonorsByPaymentMethodButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GetDonorsByPaymentMethodButton.Name = "GetDonorsByPaymentMethodButton";
+            this.GetDonorsByPaymentMethodButton.Size = new System.Drawing.Size(193, 52);
+            this.GetDonorsByPaymentMethodButton.TabIndex = 45;
+            this.GetDonorsByPaymentMethodButton.Text = "Get Donors Payment Method";
+            this.GetDonorsByPaymentMethodButton.UseVisualStyleBackColor = true;
+            this.GetDonorsByPaymentMethodButton.Click += new System.EventHandler(this.GetDonorsByPaymentMethodButton_Click);
+            // 
+            // PaymentMethodTextBox
+            // 
+            this.PaymentMethodTextBox.Location = new System.Drawing.Point(45, 191);
+            this.PaymentMethodTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PaymentMethodTextBox.Name = "PaymentMethodTextBox";
+            this.PaymentMethodTextBox.Size = new System.Drawing.Size(155, 22);
+            this.PaymentMethodTextBox.TabIndex = 46;
+            // 
+            // PaymentMethodlabel
+            // 
+            this.PaymentMethodlabel.AutoSize = true;
+            this.PaymentMethodlabel.Location = new System.Drawing.Point(64, 175);
+            this.PaymentMethodlabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PaymentMethodlabel.Name = "PaymentMethodlabel";
+            this.PaymentMethodlabel.Size = new System.Drawing.Size(116, 16);
+            this.PaymentMethodlabel.TabIndex = 47;
+            this.PaymentMethodlabel.Text = "Payment Methode";
+            // 
+            // ID_label
+            // 
+            this.ID_label.AutoSize = true;
+            this.ID_label.Location = new System.Drawing.Point(67, 140);
+            this.ID_label.Name = "ID_label";
+            this.ID_label.Size = new System.Drawing.Size(20, 16);
+            this.ID_label.TabIndex = 48;
+            this.ID_label.Text = "ID";
             // 
             // Search_button
             // 
             this.Search_button.Location = new System.Drawing.Point(431, 377);
             this.Search_button.Name = "Search_button";
-            this.Search_button.Size = new System.Drawing.Size(81, 32);
-            this.Search_button.TabIndex = 42;
+            this.Search_button.Size = new System.Drawing.Size(85, 32);
+            this.Search_button.TabIndex = 49;
             this.Search_button.Text = "Search";
             this.Search_button.UseVisualStyleBackColor = true;
             this.Search_button.Click += new System.EventHandler(this.Search_button_Click);
+            // 
+            // ID_combo
+            // 
+            this.ID_combo.FormattingEnabled = true;
+            this.ID_combo.Location = new System.Drawing.Point(109, 137);
+            this.ID_combo.Name = "ID_combo";
+            this.ID_combo.Size = new System.Drawing.Size(121, 24);
+            this.ID_combo.TabIndex = 50;
+            this.ID_combo.SelectedIndexChanged += new System.EventHandler(this.ID_combo_SelectedIndexChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Search_button);
             this.Controls.Add(this.ID_combo);
-            this.Controls.Add(this.S_ID);
+            this.Controls.Add(this.Search_button);
+            this.Controls.Add(this.ID_label);
+            this.Controls.Add(this.PaymentMethodlabel);
+            this.Controls.Add(this.PaymentMethodTextBox);
+            this.Controls.Add(this.GetDonorsByPaymentMethodButton);
+            this.Controls.Add(this.don_name_lbl);
+            this.Controls.Add(this.don_name_txt);
+            this.Controls.Add(this.GetDonorDetailsButton);
+            this.Controls.Add(this.DonorIDlabel);
+            this.Controls.Add(this.DonorIDTextBox);
             this.Controls.Add(this.ben_button);
             this.Controls.Add(this.assi_button);
             this.Controls.Add(this.D_button);
@@ -566,9 +658,17 @@
         private System.Windows.Forms.Button D_button;
         private System.Windows.Forms.Button assi_button;
         private System.Windows.Forms.Button ben_button;
-        private System.Windows.Forms.Label S_ID;
-        private System.Windows.Forms.ComboBox ID_combo;
+		private System.Windows.Forms.TextBox DonorIDTextBox;
+		private System.Windows.Forms.Label DonorIDlabel;
+		private System.Windows.Forms.Button GetDonorDetailsButton;
+		private System.Windows.Forms.TextBox don_name_txt;
+		private System.Windows.Forms.Label don_name_lbl;
+		private System.Windows.Forms.Button GetDonorsByPaymentMethodButton;
+		private System.Windows.Forms.TextBox PaymentMethodTextBox;
+		private System.Windows.Forms.Label PaymentMethodlabel;
+        private System.Windows.Forms.Label ID_label;
         private System.Windows.Forms.Button Search_button;
+        private System.Windows.Forms.ComboBox ID_combo;
     }
 }
 

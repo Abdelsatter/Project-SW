@@ -35,7 +35,9 @@ namespace Project_SW
         private void Form1_Load(object sender, EventArgs e)
         {            
             Categories.SelectedIndex = -1;
-            Option_box.SelectedIndex = -1;                                             
+            Option_box.SelectedIndex = -1;
+            Date_text.Text = DateTime.Now.ToString("yyyy-MM-dd");             
+            Date_text.ReadOnly = true;            
             Date_text.BackColor = SystemColors.Control;
             Phone_text.MaxLength = 11;
             HideVisibility();
@@ -63,14 +65,15 @@ namespace Project_SW
             {
                 Option_box.Items.Add("Assign");
             }
-            else if (Categories.Text == "Beneficiary")
+			else if (Categories.Text == "Admin")
+			{
+				Option_box.Items.Add("view Donor");
+				Option_box.Items.Add("view Payment");
+			}
+			else if (Categories.Text == "Beneficiary")
             {
                 Option_box.Items.Add("Request");
             }
-
-           
-
-
         }
         private void HideVisibility()
         {
@@ -92,7 +95,7 @@ namespace Project_SW
             Status_label.Visible = false;
             Date_text.Visible = false;
             Date_label.Visible = false;
-            dataGridView.Visible = false;
+            
             button1.Visible = false;
             button2.Visible = false;
             ben_button.Visible = false;
@@ -110,17 +113,30 @@ namespace Project_SW
             D_ID.Visible = false;
             V_ID.Visible = false;
             Don_ID_box.Visible = false;
+
+			don_name_txt.Visible = false;
+			don_name_lbl.Visible = false;
+			GetDonorDetailsButton.Visible = false;
+			DonorIDTextBox.Visible = false;
+			DonorIDlabel.Visible = false;
+
+			GetDonorsByPaymentMethodButton.Visible = false;
+			PaymentMethodlabel.Visible = false;
+			PaymentMethodTextBox.Visible = false;
+			dataGridView.Visible = false;
             Search_button.Visible = false;
-        }
+            ID_label.Visible = false;   
+            ID_combo.Visible = false;
+		}
 
         private void UpdateControlVisibility()
         {
             ClearTextFields();
             HideVisibility();
-            
+
             if (Option_box.Text == "Insert")
             {
-                
+
                 button1.Visible = true;
                 if (Categories.SelectedItem != null)
                 {
@@ -164,7 +180,7 @@ namespace Project_SW
                             Address_label.Visible = true;
                             Address_text.Visible = true;
                             Status_label.Visible = true;
-                            Status_text.Visible = true;                            
+                            Status_text.Visible = true;
                             break;
                         case "Admin":
                             Name_label.Visible = true;
@@ -172,67 +188,45 @@ namespace Project_SW
                             Email_label.Visible = true;
                             Email_text.Visible = true;
                             Phone_label.Visible = true;
-                            Phone_text.Visible = true;                           
+                            Phone_text.Visible = true;
                             break;
                     }
                 }
             }
-            else if(Option_box.Text == "Edit,Del")
+            else if (Option_box.Text == "view Donor")
+            {
+				
+				Email_label.Visible = true;
+				Email_text.Visible = true;
+				Phone_label.Visible = true;
+				Phone_text.Visible = true;
+				Payment_label.Visible = true;
+				Payment_text.Visible = true;
+
+				don_name_txt.Visible = true;
+				don_name_lbl.Visible = true;
+				GetDonorDetailsButton.Visible = true;
+				DonorIDTextBox.Visible = true;
+				DonorIDlabel.Visible = true;
+			}
+
+			else if (Option_box.Text == "view Payment")
+			{
+
+				GetDonorsByPaymentMethodButton.Visible = true;
+				PaymentMethodlabel.Visible = true;
+				PaymentMethodTextBox.Visible = true;
+				dataGridView.Visible = true;
+			}
+
+			else if (Option_box.Text == "Edit,Del")
             {
                 dataGridView.Visible = true;
                 button2.Visible = true;
                 Name_label.Visible = true;
                 Name_text.Visible = true;
-                //show Data Code Here///s/////////////////////////
-                string constr = "Data source=orcl;user Id=scott;password=tiger;";
-                string cmdstr = "";
-                
-                    if (Categories.Text == "Volunteer")
-                    {
-                        cmdstr = $"SELECT * FROM Volunteer WHERE name = :name";
+                Search_button.Visible = true;
 
-                        using (OracleConnection conn = new OracleConnection(constr))
-                        {
-                            OracleCommand cmd = new OracleCommand(cmdstr, conn);
-                            cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
-                        }
-                    }
-                    else if (Categories.Text == "Donor")
-                    {
-                        cmdstr = $"SELECT * FROM Donor WHERE name = :name";
-
-                        using (OracleConnection conn = new OracleConnection(constr))
-                        {
-                            OracleCommand cmd = new OracleCommand(cmdstr, conn);
-                            cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
-                        }
-                    }
-                    else if (Categories.Text == "Beneficiary")
-                    {
-                        cmdstr = $"SELECT * FROM Beneficiary WHERE name = :name";
-
-                        using (OracleConnection conn = new OracleConnection(constr))
-                        {
-                            OracleCommand cmd = new OracleCommand(cmdstr, conn);
-                            cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
-                        }
-                    }
-                    else if (Categories.Text == "Admin")
-                    {
-                        cmdstr = $"SELECT * FROM Admin WHERE name = :name";
-
-                        using (OracleConnection conn = new OracleConnection(constr))
-                        {
-                            OracleCommand cmd = new OracleCommand(cmdstr, conn);
-                            cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
-                        }
-                    }
-                    adapter = new OracleDataAdapter(cmdstr, constr);
-                    ds = new DataSet();
-                    adapter.Fill(ds);
-                    dataGridView.DataSource = ds.Tables[0];
-
-                
             }
             else if (Option_box.Text == "Donate")
             {
@@ -262,57 +256,62 @@ namespace Project_SW
                 data_type.Visible = true;
                 type_box.Visible = true;
             }
-            else if(Option_box.Text == "Search")
+            else if (Option_box.Text == "Search")
             {
                 Search_button.Visible = true;
-                switch (Categories.SelectedItem.ToString())
+                ID_label.Visible = true;
+                ID_combo.Visible = true;
+                if (Option_box.SelectedIndex != -1)
                 {
-                    case "Volunteer":
-                        Name_label.Visible = true;
-                        Name_text.Visible = true;
-                        Email_label.Visible = true;
-                        Email_text.Visible = true;
-                        Phone_label.Visible = true;
-                        Phone_text.Visible = true;
-                        Skills_label.Visible = true;
-                        Skills_text.Visible = true;
-                        Available_label.Visible = true;
-                        Available_text.Visible = true;
-                        Date_label.Visible = true;
-                        Date_text.Visible = true;
-                        break;
-                    case "Donor":
-                        Name_label.Visible = true;
-                        Name_text.Visible = true;
-                        Email_label.Visible = true;
-                        Email_text.Visible = true;
-                        Phone_label.Visible = true;
-                        Phone_text.Visible = true;
-                        Payment_label.Visible = true;
-                        Payment_text.Visible = true;
-                        Date_label.Visible = true;
-                        Date_text.Visible = true;
-                        break;
-                    case "Beneficiary":
-                        Name_label.Visible = true;
-                        Name_text.Visible = true;
-                        Email_label.Visible = true;
-                        Email_text.Visible = true;
-                        Phone_label.Visible = true;
-                        Phone_text.Visible = true;
-                        Address_label.Visible = true;
-                        Address_text.Visible = true;
-                        Status_label.Visible = true;
-                        Status_text.Visible = true;
-                        break;
-                    case "Admin":
-                        Name_label.Visible = true;
-                        Name_text.Visible = true;
-                        Email_label.Visible = true;
-                        Email_text.Visible = true;
-                        Phone_label.Visible = true;
-                        Phone_text.Visible = true;
-                        break;
+                    switch (Categories.SelectedItem.ToString())
+                    {
+                        case "Volunteer":
+                            Name_label.Visible = true;
+                            Name_text.Visible = true;
+                            Email_label.Visible = true;
+                            Email_text.Visible = true;
+                            Phone_label.Visible = true;
+                            Phone_text.Visible = true;
+                            Skills_label.Visible = true;
+                            Skills_text.Visible = true;
+                            Available_label.Visible = true;
+                            Available_text.Visible = true;
+                            Date_label.Visible = true;
+                            Date_text.Visible = true;
+                            break;
+                        case "Donor":
+                            Name_label.Visible = true;
+                            Name_text.Visible = true;
+                            Email_label.Visible = true;
+                            Email_text.Visible = true;
+                            Phone_label.Visible = true;
+                            Phone_text.Visible = true;
+                            Payment_label.Visible = true;
+                            Payment_text.Visible = true;
+                            Date_label.Visible = true;
+                            Date_text.Visible = true;
+                            break;
+                        case "Beneficiary":
+                            Name_label.Visible = true;
+                            Name_text.Visible = true;
+                            Email_label.Visible = true;
+                            Email_text.Visible = true;
+                            Phone_label.Visible = true;
+                            Phone_text.Visible = true;
+                            Address_label.Visible = true;
+                            Address_text.Visible = true;
+                            Status_label.Visible = true;
+                            Status_text.Visible = true;
+                            break;
+                        case "Admin":
+                            Name_label.Visible = true;
+                            Name_text.Visible = true;
+                            Email_label.Visible = true;
+                            Email_text.Visible = true;
+                            Phone_label.Visible = true;
+                            Phone_text.Visible = true;
+                            break;
+                    }
                 }
             }
         }
@@ -462,13 +461,12 @@ namespace Project_SW
         }
         private void Option_box_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            UpdateControlVisibility();
             ClearTextFields();
+            UpdateControlVisibility();
             Option_box.SelectedIndex = Option_box.SelectedIndex;
             ID_combo.SelectedIndex = -1;
-            ID_combo.Items.Clear();        
-            if(Option_box.Text=="Search")
+            ID_combo.Items.Clear();
+            if (Option_box.Text == "Search")
             {
                 //Add ID Hereee
                 ID_combo.Items.Clear();
@@ -476,21 +474,21 @@ namespace Project_SW
                 string table = Categories.Text;
                 string idColumn = table + "_ID";
 
-                
-                    conn = new OracleConnection(ordb);
-                    conn.Open();
 
-                    OracleCommand cmd = new OracleCommand($"SELECT {idColumn} FROM {table}", conn);
-                    OracleDataReader dr = cmd.ExecuteReader();
+                conn = new OracleConnection(ordb);
+                conn.Open();
 
-                    while (dr.Read())
-                    {
-                        ID_combo.Items.Add(dr[0].ToString());
-                    }
+                OracleCommand cmd = new OracleCommand($"SELECT {idColumn} FROM {table}", conn);
+                OracleDataReader dr = cmd.ExecuteReader();
 
-                    dr.Close();
-                    conn.Dispose();
-                
+                while (dr.Read())
+                {
+                    ID_combo.Items.Add(dr[0].ToString());
+                }
+
+                dr.Close();
+                conn.Dispose();
+
             }
         }
 
@@ -526,21 +524,131 @@ namespace Project_SW
 
         }
 
-       
+		private void GetDonorDetailsButton_Click(object sender, EventArgs e)
+		{
+			string donorID = DonorIDTextBox.Text; // Assuming there's a textbox for Donor ID
+			if (!string.IsNullOrEmpty(donorID))
+			{
+				OracleConnection conn = new OracleConnection(ordb);
+				conn.Open();
+
+				OracleCommand cmd = new OracleCommand("GetDonorDetails", conn);
+				cmd.CommandType = CommandType.StoredProcedure;
+
+				cmd.Parameters.Add("p_DonorID", OracleDbType.Varchar2).Value = donorID;
+
+				OracleParameter pName = new OracleParameter("p_Name", OracleDbType.Varchar2, 50);
+				pName.Direction = ParameterDirection.Output;
+				cmd.Parameters.Add(pName);
+
+				OracleParameter pEmail = new OracleParameter("p_Email", OracleDbType.Varchar2, 50);
+				pEmail.Direction = ParameterDirection.Output;
+				cmd.Parameters.Add(pEmail);
+
+				OracleParameter pPhone = new OracleParameter("p_PhoneNumber", OracleDbType.Varchar2, 15);
+				pPhone.Direction = ParameterDirection.Output;
+				cmd.Parameters.Add(pPhone);
+
+				OracleParameter pPayment = new OracleParameter("p_PaymentMethod", OracleDbType.Varchar2, 20);
+				pPayment.Direction = ParameterDirection.Output;
+				cmd.Parameters.Add(pPayment);
+
+				cmd.ExecuteNonQuery();
+
+				// Assign output values to UI fields
+				don_name_lbl.Visible = true;
+				don_name_txt.Visible = true;
+				don_name_txt.Text = pName.Value.ToString();
+
+				Email_label.Visible = true;
+				Email_text.Visible = true;
+				Email_text.Text = pEmail.Value.ToString();
+
+				Phone_label.Visible = true;
+				Phone_text.Visible = true;
+				Phone_text.Text = pPhone.Value.ToString();
+
+				DonorIDlabel.Visible = true;
+				DonorIDTextBox.Visible = true;
+				DonorIDTextBox.Text = donorID;
+
+				Payment_label.Visible = true;
+				Payment_text.Visible = true;
+				Payment_text.Text = pPayment.Value.ToString();
+
+				conn.Close();
+			}
+			else
+			{
+				MessageBox.Show("Please enter a valid Donor ID.");
+			}
+		}
+
+		private void GetDonorsByPaymentMethodButton_Click(object sender, EventArgs e)
+		{
+			string paymentMethod = PaymentMethodTextBox.Text; // Assuming there's a textbox for Payment Method
+			if (!string.IsNullOrEmpty(paymentMethod))
+			{
+				OracleConnection conn = new OracleConnection(ordb);
+				conn.Open();
+
+				OracleCommand cmd = new OracleCommand("GetDonorsByPaymentMethod", conn);
+				cmd.CommandType = CommandType.StoredProcedure;
+
+				// Input parameter
+				cmd.Parameters.Add("p_payment_method", OracleDbType.Varchar2).Value = paymentMethod;
+
+				// Output parameter (SYS_REFCURSOR)
+				OracleParameter pDonors = new OracleParameter("p_donors", OracleDbType.RefCursor);
+				pDonors.Direction = ParameterDirection.Output;
+				cmd.Parameters.Add(pDonors);
+
+				// Execute
+				cmd.ExecuteNonQuery();
+
+				// Get the reader from the output parameter
+				OracleDataReader reader = ((OracleRefCursor)pDonors.Value).GetDataReader();
+
+				// Load into DataTable and bind to DataGridView
+				DataTable dt = new DataTable();
+				dt.Load(reader);
+				dataGridView.DataSource = dt;
+
+				// Enhance DataGridView display
+				dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+				dataGridView.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView.Font, FontStyle.Bold);
+				dataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+				dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+				conn.Close();
+			}
+			else
+			{
+				MessageBox.Show("Please enter a valid payment method.");
+			}
+		}
+
+        private void ID_combo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
 
         private void Search_button_Click(object sender, EventArgs e)
         {
             //Show Specific row data Here
-            if (string.IsNullOrWhiteSpace(ID_combo.Text))
+            if (Option_box.Text == "Search")
             {
-                MessageBox.Show("Please select or enter an ID.");
-                return;
-            }
 
-            string table = Categories.Text;
-            string idColumn = table + "_ID";
+                if (string.IsNullOrWhiteSpace(ID_combo.Text))
+                {
+                    MessageBox.Show("Please select or enter an ID.");
+                    return;
+                }
 
-            
+                string table = Categories.Text;
+                string idColumn = table + "_ID";
+
+
                 conn = new OracleConnection(ordb);
                 conn.Open();
 
@@ -580,7 +688,57 @@ namespace Project_SW
 
                 dr.Close();
                 conn.Dispose();
-           
+            }
+            else if (Option_box.Text == "Edit,Del")
+            {
+                //show Data Code Here////////////////////////////
+                //string constr = "Data source=orcl;user Id=scott;password=tiger;";
+                string cmdstr = "";
+                if (Categories.Text == "Volunteer")
+                {
+                    cmdstr = $"SELECT * FROM Volunteer WHERE name = :name";
+
+                    using (OracleConnection conn = new OracleConnection(ordb))
+                    {
+                        OracleCommand cmd = new OracleCommand(cmdstr, conn);
+                        cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
+                    }
+                }
+                else if (Categories.Text == "Donor")
+                {
+                    cmdstr = $"SELECT * FROM Donor WHERE name = :name";
+
+                    using (OracleConnection conn = new OracleConnection(ordb))
+                    {
+                        OracleCommand cmd = new OracleCommand(cmdstr, conn);
+                        cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
+                    }
+                }
+                else if (Categories.Text == "Beneficiary")
+                {
+                    cmdstr = $"SELECT * FROM Beneficiary WHERE name = :name";
+
+                    using (OracleConnection conn = new OracleConnection(ordb))
+                    {
+                        OracleCommand cmd = new OracleCommand(cmdstr, conn);
+                        cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
+                    }
+                }
+                else if (Categories.Text == "Admin")
+                {
+                    cmdstr = $"SELECT * FROM Admin WHERE name = :name";
+
+                    using (OracleConnection conn = new OracleConnection(ordb))
+                    {
+                        OracleCommand cmd = new OracleCommand(cmdstr, conn);
+                        cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
+                    }
+                }
+                adapter = new OracleDataAdapter(cmdstr, ordb);
+                ds = new DataSet();
+                adapter.Fill(ds);
+                dataGridView.DataSource = ds.Tables[0];
+            }
         }
         private void ClearTextFields()
         {
