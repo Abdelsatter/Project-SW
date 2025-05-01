@@ -54,22 +54,17 @@
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
             this.Type_ID = new System.Windows.Forms.Label();
-            this.ID_box = new System.Windows.Forms.TextBox();
             this.D_amount = new System.Windows.Forms.Label();
             this.amount_box = new System.Windows.Forms.TextBox();
             this.details_box = new System.Windows.Forms.TextBox();
             this.D_details = new System.Windows.Forms.Label();
             this.type_box = new System.Windows.Forms.TextBox();
             this.data_type = new System.Windows.Forms.Label();
-            this.Don_ID_box = new System.Windows.Forms.TextBox();
             this.D_ID = new System.Windows.Forms.Label();
-            this.Vol_ID_box = new System.Windows.Forms.TextBox();
             this.V_ID = new System.Windows.Forms.Label();
             this.D_button = new System.Windows.Forms.Button();
             this.assi_button = new System.Windows.Forms.Button();
             this.ben_button = new System.Windows.Forms.Button();
-            this.DonorIDTextBox = new System.Windows.Forms.TextBox();
-            this.DonorIDlabel = new System.Windows.Forms.Label();
             this.GetDonorDetailsButton = new System.Windows.Forms.Button();
             this.don_name_txt = new System.Windows.Forms.TextBox();
             this.don_name_lbl = new System.Windows.Forms.Label();
@@ -79,6 +74,10 @@
             this.ID_label = new System.Windows.Forms.Label();
             this.Search_button = new System.Windows.Forms.Button();
             this.ID_combo = new System.Windows.Forms.ComboBox();
+            this.Back_button = new System.Windows.Forms.Button();
+            this.ID_box = new System.Windows.Forms.ComboBox();
+            this.Vol_ID_box = new System.Windows.Forms.ComboBox();
+            this.Don_ID_box = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -320,14 +319,6 @@
             this.Type_ID.TabIndex = 25;
             this.Type_ID.Text = "ID";
             // 
-            // ID_box
-            // 
-            this.ID_box.Location = new System.Drawing.Point(653, 62);
-            this.ID_box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ID_box.Name = "ID_box";
-            this.ID_box.Size = new System.Drawing.Size(100, 22);
-            this.ID_box.TabIndex = 26;
-            // 
             // D_amount
             // 
             this.D_amount.AutoSize = true;
@@ -379,14 +370,6 @@
             this.data_type.TabIndex = 29;
             this.data_type.Text = "Type";
             // 
-            // Don_ID_box
-            // 
-            this.Don_ID_box.Location = new System.Drawing.Point(653, 226);
-            this.Don_ID_box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Don_ID_box.Name = "Don_ID_box";
-            this.Don_ID_box.Size = new System.Drawing.Size(100, 22);
-            this.Don_ID_box.TabIndex = 36;
-            // 
             // D_ID
             // 
             this.D_ID.AutoSize = true;
@@ -395,14 +378,6 @@
             this.D_ID.Size = new System.Drawing.Size(48, 16);
             this.D_ID.TabIndex = 35;
             this.D_ID.Text = "Don ID";
-            // 
-            // Vol_ID_box
-            // 
-            this.Vol_ID_box.Location = new System.Drawing.Point(653, 194);
-            this.Vol_ID_box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Vol_ID_box.Name = "Vol_ID_box";
-            this.Vol_ID_box.Size = new System.Drawing.Size(100, 22);
-            this.Vol_ID_box.TabIndex = 34;
             // 
             // V_ID
             // 
@@ -446,28 +421,10 @@
             this.ben_button.UseVisualStyleBackColor = true;
             this.ben_button.Click += new System.EventHandler(this.ben_button_Click);
             // 
-            // DonorIDTextBox
-            // 
-            this.DonorIDTextBox.Location = new System.Drawing.Point(61, 166);
-            this.DonorIDTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.DonorIDTextBox.Name = "DonorIDTextBox";
-            this.DonorIDTextBox.Size = new System.Drawing.Size(127, 22);
-            this.DonorIDTextBox.TabIndex = 40;
-            // 
-            // DonorIDlabel
-            // 
-            this.DonorIDlabel.AutoSize = true;
-            this.DonorIDlabel.Location = new System.Drawing.Point(88, 146);
-            this.DonorIDlabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.DonorIDlabel.Name = "DonorIDlabel";
-            this.DonorIDlabel.Size = new System.Drawing.Size(60, 16);
-            this.DonorIDlabel.TabIndex = 41;
-            this.DonorIDlabel.Text = "Donor ID";
-            // 
             // GetDonorDetailsButton
             // 
             this.GetDonorDetailsButton.Location = new System.Drawing.Point(29, 207);
-            this.GetDonorDetailsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GetDonorDetailsButton.Margin = new System.Windows.Forms.Padding(4);
             this.GetDonorDetailsButton.Name = "GetDonorDetailsButton";
             this.GetDonorDetailsButton.Size = new System.Drawing.Size(191, 49);
             this.GetDonorDetailsButton.TabIndex = 42;
@@ -478,7 +435,7 @@
             // don_name_txt
             // 
             this.don_name_txt.Location = new System.Drawing.Point(409, 62);
-            this.don_name_txt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.don_name_txt.Margin = new System.Windows.Forms.Padding(4);
             this.don_name_txt.Name = "don_name_txt";
             this.don_name_txt.Size = new System.Drawing.Size(175, 22);
             this.don_name_txt.TabIndex = 43;
@@ -496,7 +453,7 @@
             // GetDonorsByPaymentMethodButton
             // 
             this.GetDonorsByPaymentMethodButton.Location = new System.Drawing.Point(29, 226);
-            this.GetDonorsByPaymentMethodButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GetDonorsByPaymentMethodButton.Margin = new System.Windows.Forms.Padding(4);
             this.GetDonorsByPaymentMethodButton.Name = "GetDonorsByPaymentMethodButton";
             this.GetDonorsByPaymentMethodButton.Size = new System.Drawing.Size(193, 52);
             this.GetDonorsByPaymentMethodButton.TabIndex = 45;
@@ -507,7 +464,7 @@
             // PaymentMethodTextBox
             // 
             this.PaymentMethodTextBox.Location = new System.Drawing.Point(45, 191);
-            this.PaymentMethodTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PaymentMethodTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.PaymentMethodTextBox.Name = "PaymentMethodTextBox";
             this.PaymentMethodTextBox.Size = new System.Drawing.Size(155, 22);
             this.PaymentMethodTextBox.TabIndex = 46;
@@ -550,11 +507,49 @@
             this.ID_combo.TabIndex = 50;
             this.ID_combo.SelectedIndexChanged += new System.EventHandler(this.ID_combo_SelectedIndexChanged);
             // 
+            // Back_button
+            // 
+            this.Back_button.Location = new System.Drawing.Point(13, 9);
+            this.Back_button.Name = "Back_button";
+            this.Back_button.Size = new System.Drawing.Size(57, 27);
+            this.Back_button.TabIndex = 51;
+            this.Back_button.Text = "Back";
+            this.Back_button.UseVisualStyleBackColor = true;
+            this.Back_button.Click += new System.EventHandler(this.Back_button_Click);
+            // 
+            // ID_box
+            // 
+            this.ID_box.FormattingEnabled = true;
+            this.ID_box.Location = new System.Drawing.Point(653, 60);
+            this.ID_box.Name = "ID_box";
+            this.ID_box.Size = new System.Drawing.Size(121, 24);
+            this.ID_box.TabIndex = 52;
+            // 
+            // Vol_ID_box
+            // 
+            this.Vol_ID_box.FormattingEnabled = true;
+            this.Vol_ID_box.Location = new System.Drawing.Point(653, 191);
+            this.Vol_ID_box.Name = "Vol_ID_box";
+            this.Vol_ID_box.Size = new System.Drawing.Size(121, 24);
+            this.Vol_ID_box.TabIndex = 53;
+            // 
+            // Don_ID_box
+            // 
+            this.Don_ID_box.FormattingEnabled = true;
+            this.Don_ID_box.Location = new System.Drawing.Point(653, 224);
+            this.Don_ID_box.Name = "Don_ID_box";
+            this.Don_ID_box.Size = new System.Drawing.Size(121, 24);
+            this.Don_ID_box.TabIndex = 54;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Don_ID_box);
+            this.Controls.Add(this.Vol_ID_box);
+            this.Controls.Add(this.ID_box);
+            this.Controls.Add(this.Back_button);
             this.Controls.Add(this.ID_combo);
             this.Controls.Add(this.Search_button);
             this.Controls.Add(this.ID_label);
@@ -564,14 +559,10 @@
             this.Controls.Add(this.don_name_lbl);
             this.Controls.Add(this.don_name_txt);
             this.Controls.Add(this.GetDonorDetailsButton);
-            this.Controls.Add(this.DonorIDlabel);
-            this.Controls.Add(this.DonorIDTextBox);
             this.Controls.Add(this.ben_button);
             this.Controls.Add(this.assi_button);
             this.Controls.Add(this.D_button);
-            this.Controls.Add(this.Don_ID_box);
             this.Controls.Add(this.D_ID);
-            this.Controls.Add(this.Vol_ID_box);
             this.Controls.Add(this.V_ID);
             this.Controls.Add(this.details_box);
             this.Controls.Add(this.D_details);
@@ -579,7 +570,6 @@
             this.Controls.Add(this.data_type);
             this.Controls.Add(this.amount_box);
             this.Controls.Add(this.D_amount);
-            this.Controls.Add(this.ID_box);
             this.Controls.Add(this.Type_ID);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView);
@@ -644,22 +634,17 @@
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label Type_ID;
-        private System.Windows.Forms.TextBox ID_box;
         private System.Windows.Forms.Label D_amount;
         private System.Windows.Forms.TextBox amount_box;
         private System.Windows.Forms.TextBox details_box;
         private System.Windows.Forms.Label D_details;
         private System.Windows.Forms.TextBox type_box;
         private System.Windows.Forms.Label data_type;
-        private System.Windows.Forms.TextBox Don_ID_box;
         private System.Windows.Forms.Label D_ID;
-        private System.Windows.Forms.TextBox Vol_ID_box;
         private System.Windows.Forms.Label V_ID;
         private System.Windows.Forms.Button D_button;
         private System.Windows.Forms.Button assi_button;
         private System.Windows.Forms.Button ben_button;
-		private System.Windows.Forms.TextBox DonorIDTextBox;
-		private System.Windows.Forms.Label DonorIDlabel;
 		private System.Windows.Forms.Button GetDonorDetailsButton;
 		private System.Windows.Forms.TextBox don_name_txt;
 		private System.Windows.Forms.Label don_name_lbl;
@@ -669,6 +654,10 @@
         private System.Windows.Forms.Label ID_label;
         private System.Windows.Forms.Button Search_button;
         private System.Windows.Forms.ComboBox ID_combo;
+        private System.Windows.Forms.Button Back_button;
+        private System.Windows.Forms.ComboBox ID_box;
+        private System.Windows.Forms.ComboBox Vol_ID_box;
+        private System.Windows.Forms.ComboBox Don_ID_box;
     }
 }
 
