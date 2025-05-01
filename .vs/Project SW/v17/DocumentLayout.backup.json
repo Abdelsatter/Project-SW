@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{25695984-3AC8-4CDF-A7E4-3E33960016A8}|Project SW.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,20 +34,32 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\Form1.cs [Design]*",
+              "RelativeToolTip": "Form1.cs [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T23:18:34.837Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Form1.cs",
               "DocumentMoniker": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\Form1.cs*",
               "RelativeToolTip": "Form1.cs*",
-              "ViewState": "AgIAADYBAAAAAAAAAAAAAEQBAABfAAAAAAAAAA==",
+              "ViewState": "AgIAAD8CAAAAAAAAAAAAAEACAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-29T14:22:02.457Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\corse\\Semester6\\Software Engineering\\Project\\Project SW\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",

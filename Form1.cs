@@ -35,9 +35,7 @@ namespace Project_SW
         private void Form1_Load(object sender, EventArgs e)
         {            
             Categories.SelectedIndex = -1;
-            Option_box.SelectedIndex = -1;
-            Date_text.Text = DateTime.Now.ToString("yyyy-MM-dd");             
-            Date_text.ReadOnly = true;            
+            Option_box.SelectedIndex = -1;                                             
             Date_text.BackColor = SystemColors.Control;
             Phone_text.MaxLength = 11;
             HideVisibility();
@@ -47,12 +45,16 @@ namespace Project_SW
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ClearTextFields();
             Option_box.SelectedIndex = -1;
+            ID_combo.SelectedIndex = -1;
+            ID_combo.Items.Clear();
+
             UpdateControlVisibility();          
             Option_box.Items.Clear();
             Option_box.Items.Add("Insert");
             Option_box.Items.Add("Edit,Del");
-
+            Option_box.Items.Add("Search");
             if (Categories.Text == "Donor")
             {
                 Option_box.Items.Add("Donate");
@@ -65,6 +67,10 @@ namespace Project_SW
             {
                 Option_box.Items.Add("Request");
             }
+
+           
+
+
         }
         private void HideVisibility()
         {
@@ -104,10 +110,12 @@ namespace Project_SW
             D_ID.Visible = false;
             V_ID.Visible = false;
             Don_ID_box.Visible = false;
+            Search_button.Visible = false;
         }
 
         private void UpdateControlVisibility()
         {
+            ClearTextFields();
             HideVisibility();
             
             if (Option_box.Text == "Insert")
@@ -130,7 +138,8 @@ namespace Project_SW
                             Available_label.Visible = true;
                             Available_text.Visible = true;
                             Date_label.Visible = true;
-                            Date_text.Visible = true;                          
+                            Date_text.Visible = true;
+                            Date_text.Text = DateTime.Now.ToString("yyyy-MM-dd");
                             break;
                         case "Donor":
                             Name_label.Visible = true;
@@ -142,7 +151,8 @@ namespace Project_SW
                             Payment_label.Visible = true;
                             Payment_text.Visible = true;
                             Date_label.Visible = true;
-                            Date_text.Visible = true;                          
+                            Date_text.Visible = true;
+                            Date_text.Text = DateTime.Now.ToString("yyyy-MM-dd");
                             break;
                         case "Beneficiary":
                             Name_label.Visible = true;
@@ -173,55 +183,56 @@ namespace Project_SW
                 button2.Visible = true;
                 Name_label.Visible = true;
                 Name_text.Visible = true;
-                //show Data Code Here////////////////////////////
+                //show Data Code Here///s/////////////////////////
                 string constr = "Data source=orcl;user Id=scott;password=tiger;";
                 string cmdstr = "";
-                if (Categories.Text == "Volunteer")
-                {
-                    cmdstr = $"SELECT * FROM Volunteer WHERE name = :name";
-
-                    using (OracleConnection conn = new OracleConnection(constr))
+                
+                    if (Categories.Text == "Volunteer")
                     {
-                        OracleCommand cmd = new OracleCommand(cmdstr, conn);
-                        cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
-                    }
-                }   
-                else if(Categories.Text =="Donor")
-                {
-                    cmdstr = $"SELECT * FROM Donor WHERE name = :name";
+                        cmdstr = $"SELECT * FROM Volunteer WHERE name = :name";
 
-                    using (OracleConnection conn = new OracleConnection(constr))
+                        using (OracleConnection conn = new OracleConnection(constr))
+                        {
+                            OracleCommand cmd = new OracleCommand(cmdstr, conn);
+                            cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
+                        }
+                    }
+                    else if (Categories.Text == "Donor")
                     {
-                        OracleCommand cmd = new OracleCommand(cmdstr, conn);
-                        cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
-                    }
-                }
-                else if(Categories.Text== "Beneficiary")
-                {
-                    cmdstr = $"SELECT * FROM Beneficiary WHERE name = :name";
+                        cmdstr = $"SELECT * FROM Donor WHERE name = :name";
 
-                    using (OracleConnection conn = new OracleConnection(constr))
+                        using (OracleConnection conn = new OracleConnection(constr))
+                        {
+                            OracleCommand cmd = new OracleCommand(cmdstr, conn);
+                            cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
+                        }
+                    }
+                    else if (Categories.Text == "Beneficiary")
                     {
-                        OracleCommand cmd = new OracleCommand(cmdstr, conn);
-                        cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
-                    }
-                }
-                else if(Categories.Text =="Admin")
-                {
-                    cmdstr = $"SELECT * FROM Admin WHERE name = :name";
+                        cmdstr = $"SELECT * FROM Beneficiary WHERE name = :name";
 
-                    using (OracleConnection conn = new OracleConnection(constr))
+                        using (OracleConnection conn = new OracleConnection(constr))
+                        {
+                            OracleCommand cmd = new OracleCommand(cmdstr, conn);
+                            cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
+                        }
+                    }
+                    else if (Categories.Text == "Admin")
                     {
-                        OracleCommand cmd = new OracleCommand(cmdstr, conn);
-                        cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
+                        cmdstr = $"SELECT * FROM Admin WHERE name = :name";
+
+                        using (OracleConnection conn = new OracleConnection(constr))
+                        {
+                            OracleCommand cmd = new OracleCommand(cmdstr, conn);
+                            cmd.Parameters.Add(new OracleParameter("name", Name_text.Text));
+                        }
                     }
-                }
-                adapter = new OracleDataAdapter(cmdstr, constr);
-                ds=new DataSet();
-                adapter.Fill(ds);
-                dataGridView.DataSource= ds.Tables[0];
+                    adapter = new OracleDataAdapter(cmdstr, constr);
+                    ds = new DataSet();
+                    adapter.Fill(ds);
+                    dataGridView.DataSource = ds.Tables[0];
 
-
+                
             }
             else if (Option_box.Text == "Donate")
             {
@@ -250,6 +261,59 @@ namespace Project_SW
                 ID_box.Visible = true;
                 data_type.Visible = true;
                 type_box.Visible = true;
+            }
+            else if(Option_box.Text == "Search")
+            {
+                Search_button.Visible = true;
+                switch (Categories.SelectedItem.ToString())
+                {
+                    case "Volunteer":
+                        Name_label.Visible = true;
+                        Name_text.Visible = true;
+                        Email_label.Visible = true;
+                        Email_text.Visible = true;
+                        Phone_label.Visible = true;
+                        Phone_text.Visible = true;
+                        Skills_label.Visible = true;
+                        Skills_text.Visible = true;
+                        Available_label.Visible = true;
+                        Available_text.Visible = true;
+                        Date_label.Visible = true;
+                        Date_text.Visible = true;
+                        break;
+                    case "Donor":
+                        Name_label.Visible = true;
+                        Name_text.Visible = true;
+                        Email_label.Visible = true;
+                        Email_text.Visible = true;
+                        Phone_label.Visible = true;
+                        Phone_text.Visible = true;
+                        Payment_label.Visible = true;
+                        Payment_text.Visible = true;
+                        Date_label.Visible = true;
+                        Date_text.Visible = true;
+                        break;
+                    case "Beneficiary":
+                        Name_label.Visible = true;
+                        Name_text.Visible = true;
+                        Email_label.Visible = true;
+                        Email_text.Visible = true;
+                        Phone_label.Visible = true;
+                        Phone_text.Visible = true;
+                        Address_label.Visible = true;
+                        Address_text.Visible = true;
+                        Status_label.Visible = true;
+                        Status_text.Visible = true;
+                        break;
+                    case "Admin":
+                        Name_label.Visible = true;
+                        Name_text.Visible = true;
+                        Email_label.Visible = true;
+                        Email_text.Visible = true;
+                        Phone_label.Visible = true;
+                        Phone_text.Visible = true;
+                        break;
+                }
             }
         }
         private void button1_Click(object sender, EventArgs e)
@@ -398,7 +462,36 @@ namespace Project_SW
         }
         private void Option_box_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             UpdateControlVisibility();
+            ClearTextFields();
+            Option_box.SelectedIndex = Option_box.SelectedIndex;
+            ID_combo.SelectedIndex = -1;
+            ID_combo.Items.Clear();        
+            if(Option_box.Text=="Search")
+            {
+                //Add ID Hereee
+                ID_combo.Items.Clear();
+
+                string table = Categories.Text;
+                string idColumn = table + "_ID";
+
+                
+                    conn = new OracleConnection(ordb);
+                    conn.Open();
+
+                    OracleCommand cmd = new OracleCommand($"SELECT {idColumn} FROM {table}", conn);
+                    OracleDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        ID_combo.Items.Add(dr[0].ToString());
+                    }
+
+                    dr.Close();
+                    conn.Dispose();
+                
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -431,6 +524,75 @@ namespace Project_SW
 
 
 
+        }
+
+       
+
+        private void Search_button_Click(object sender, EventArgs e)
+        {
+            //Show Specific row data Here
+            if (string.IsNullOrWhiteSpace(ID_combo.Text))
+            {
+                MessageBox.Show("Please select or enter an ID.");
+                return;
+            }
+
+            string table = Categories.Text;
+            string idColumn = table + "_ID";
+
+            
+                conn = new OracleConnection(ordb);
+                conn.Open();
+
+                OracleCommand cmd = new OracleCommand($"SELECT * FROM {table} WHERE {idColumn} = :id", conn);
+                cmd.Parameters.Add("id", ID_combo.Text.Trim());
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    Name_text.Text = dr["Name"].ToString();
+                    Email_text.Text = dr["Email"].ToString();
+                    Phone_text.Text = dr["Phone_Number"].ToString();
+
+                    if (table == "Donor")
+                    {
+                        Payment_text.Text = dr["Payment_Method"].ToString();
+                        Date_text.Text = Convert.ToDateTime(dr["Registration_Date"]).ToString("yyyy-MM-dd");
+                    }
+                    else if (table == "Volunteer")
+                    {
+                        Skills_text.Text = dr["Skills"].ToString();
+                        Available_text.Text = dr["Availability"].ToString();
+                        Date_text.Text = Convert.ToDateTime(dr["Registration_Date"]).ToString("yyyy-MM-dd");
+                    }
+                    else if (table == "Beneficiary")
+                    {
+                        Address_text.Text = dr["Address"].ToString();
+                        Status_text.Text = dr["Status"].ToString();
+                    }
+                }
+                else
+                {
+                    ClearTextFields();
+                    MessageBox.Show("No data found for the selected ID.");
+                }
+
+                dr.Close();
+                conn.Dispose();
+           
+        }
+        private void ClearTextFields()
+        {
+            Name_text.Text = "";
+            Email_text.Text = "";
+            Phone_text.Text = "";
+            Payment_text.Text = "";
+            Skills_text.Text = "";
+            Available_text.Text = "";
+            Address_text.Text = "";
+            Status_text.Text = "";
+            Date_text.Text = "";
         }
     }
 }
