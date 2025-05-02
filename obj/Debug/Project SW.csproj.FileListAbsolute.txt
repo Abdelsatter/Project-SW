@@ -21,3 +21,15 @@ D:\corse\Semester6\Software Engineering\Project\Project SW\obj\Debug\Project SW.
 D:\corse\Semester6\Software Engineering\Project\Project SW\obj\Debug\Project SW.exe
 D:\corse\Semester6\Software Engineering\Project\Project SW\obj\Debug\Project SW.pdb
 D:\corse\Semester6\Software Engineering\Project\Project SW\bin\Debug\Project SW.pdb
+C:\Users\youss\source\repos\dummy5\bin\Debug\Project SW.exe.config
+C:\Users\youss\source\repos\dummy5\bin\Debug\Project SW.exe
+C:\Users\youss\source\repos\dummy5\bin\Debug\Project SW.pdb
+C:\Users\youss\source\repos\dummy5\obj\Debug\Project SW.csproj.AssemblyReference.cache
+C:\Users\youss\source\repos\dummy5\obj\Debug\Project_SW.Form1.resources
+C:\Users\youss\source\repos\dummy5\obj\Debug\Project_SW.Form2.resources
+C:\Users\youss\source\repos\dummy5\obj\Debug\Project_SW.Properties.Resources.resources
+C:\Users\youss\source\repos\dummy5\obj\Debug\Project SW.csproj.GenerateResource.cache
+C:\Users\youss\source\repos\dummy5\obj\Debug\Project SW.csproj.CoreCompileInputs.cache
+C:\Users\youss\source\repos\dummy5\obj\Debug\Project SW.csproj.Up2Date
+C:\Users\youss\source\repos\dummy5\obj\Debug\Project SW.exe
+C:\Users\youss\source\repos\dummy5\obj\Debug\Project SW.pdb
