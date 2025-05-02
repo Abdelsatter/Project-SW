@@ -7,35 +7,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Oracle.DataAccess.Client;
-using Oracle.DataAccess.Types;
 using CrystalDecisions.Shared;
 namespace Project_SW
 {
-    public partial class Form3 : Form
+    public partial class Form4 : Form
     {
 
-        CrystalReport1 CR;
+        CrystalReport2 CR;
 
-        public Form3()
+        public Form4()
         {
             InitializeComponent();
         }
 
-        private void Form3_Load(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
-            CR = new CrystalReport1();
-            foreach (ParameterDiscreteValue v in CR.ParameterFields[2].DefaultValues)
+
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {
+            CR = new CrystalReport2();
+            foreach (ParameterDiscreteValue v in CR.ParameterFields[0].DefaultValues)
             {
                 comboBox1.Items.Add(v.Value);
             }
         }
 
+        
+
         private void button1_Click(object sender, EventArgs e)
         {
-            CR.SetParameterValue(0, Convert.ToDateTime(dateTimePicker1.Value));
-            CR.SetParameterValue(1, Convert.ToDateTime(dateTimePicker2.Value));
-            CR.SetParameterValue(2, comboBox1.Text);
+            CR.SetParameterValue(0, comboBox1.Text);
             crystalReportViewer1.ReportSource = CR;
         }
     }

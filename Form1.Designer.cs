@@ -38,14 +38,10 @@
             this.Phone_label = new System.Windows.Forms.Label();
             this.Phone_text = new System.Windows.Forms.TextBox();
             this.Payment_label = new System.Windows.Forms.Label();
-            this.Payment_text = new System.Windows.Forms.TextBox();
-            this.Status_text = new System.Windows.Forms.TextBox();
             this.Status_label = new System.Windows.Forms.Label();
             this.Address_text = new System.Windows.Forms.TextBox();
             this.Address_label = new System.Windows.Forms.Label();
-            this.Available_text = new System.Windows.Forms.TextBox();
             this.Available_label = new System.Windows.Forms.Label();
-            this.Skills_text = new System.Windows.Forms.TextBox();
             this.Skills_label = new System.Windows.Forms.Label();
             this.Date_text = new System.Windows.Forms.TextBox();
             this.Date_label = new System.Windows.Forms.Label();
@@ -58,7 +54,6 @@
             this.amount_box = new System.Windows.Forms.TextBox();
             this.details_box = new System.Windows.Forms.TextBox();
             this.D_details = new System.Windows.Forms.Label();
-            this.type_box = new System.Windows.Forms.TextBox();
             this.data_type = new System.Windows.Forms.Label();
             this.D_ID = new System.Windows.Forms.Label();
             this.V_ID = new System.Windows.Forms.Label();
@@ -69,7 +64,6 @@
             this.don_name_txt = new System.Windows.Forms.TextBox();
             this.don_name_lbl = new System.Windows.Forms.Label();
             this.GetDonorsByPaymentMethodButton = new System.Windows.Forms.Button();
-            this.PaymentMethodTextBox = new System.Windows.Forms.TextBox();
             this.PaymentMethodlabel = new System.Windows.Forms.Label();
             this.ID_label = new System.Windows.Forms.Label();
             this.Search_button = new System.Windows.Forms.Button();
@@ -81,7 +75,14 @@
             this.S_label = new System.Windows.Forms.Label();
             this.D_label = new System.Windows.Forms.Label();
             this.D_box = new System.Windows.Forms.TextBox();
-            this.S_box = new System.Windows.Forms.TextBox();
+            this.Payment_text = new System.Windows.Forms.ComboBox();
+            this.PaymentMethodTextBox = new System.Windows.Forms.ComboBox();
+            this.type_box = new System.Windows.Forms.ComboBox();
+            this.S_box = new System.Windows.Forms.ComboBox();
+            this.Status_text = new System.Windows.Forms.ComboBox();
+            this.Available_text = new System.Windows.Forms.ComboBox();
+            this.Skills_text = new System.Windows.Forms.ComboBox();
+            this.Del_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,6 +97,7 @@
             // 
             // Categories
             // 
+            this.Categories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Categories.FormattingEnabled = true;
             this.Categories.Items.AddRange(new object[] {
             "Donor",
@@ -180,22 +182,6 @@
             this.Payment_label.TabIndex = 9;
             this.Payment_label.Text = "Payment Method";
             // 
-            // Payment_text
-            // 
-            this.Payment_text.Location = new System.Drawing.Point(409, 158);
-            this.Payment_text.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Payment_text.Name = "Payment_text";
-            this.Payment_text.Size = new System.Drawing.Size(175, 22);
-            this.Payment_text.TabIndex = 10;
-            // 
-            // Status_text
-            // 
-            this.Status_text.Location = new System.Drawing.Point(409, 286);
-            this.Status_text.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Status_text.Name = "Status_text";
-            this.Status_text.Size = new System.Drawing.Size(175, 22);
-            this.Status_text.TabIndex = 18;
-            // 
             // Status_label
             // 
             this.Status_label.AutoSize = true;
@@ -222,14 +208,6 @@
             this.Address_label.TabIndex = 15;
             this.Address_label.Text = "Address";
             // 
-            // Available_text
-            // 
-            this.Available_text.Location = new System.Drawing.Point(409, 222);
-            this.Available_text.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Available_text.Name = "Available_text";
-            this.Available_text.Size = new System.Drawing.Size(175, 22);
-            this.Available_text.TabIndex = 14;
-            // 
             // Available_label
             // 
             this.Available_label.AutoSize = true;
@@ -238,14 +216,6 @@
             this.Available_label.Size = new System.Drawing.Size(72, 16);
             this.Available_label.TabIndex = 13;
             this.Available_label.Text = "Availability";
-            // 
-            // Skills_text
-            // 
-            this.Skills_text.Location = new System.Drawing.Point(409, 191);
-            this.Skills_text.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Skills_text.Name = "Skills_text";
-            this.Skills_text.Size = new System.Drawing.Size(175, 22);
-            this.Skills_text.TabIndex = 12;
             // 
             // Skills_label
             // 
@@ -284,6 +254,7 @@
             // 
             // Option_box
             // 
+            this.Option_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Option_box.FormattingEnabled = true;
             this.Option_box.Location = new System.Drawing.Point(109, 97);
             this.Option_box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -295,12 +266,12 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(247, 43);
+            this.dataGridView.Location = new System.Drawing.Point(247, 40);
             this.dataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(539, 295);
+            this.dataGridView.Size = new System.Drawing.Size(539, 331);
             this.dataGridView.TabIndex = 23;
             // 
             // button2
@@ -337,7 +308,7 @@
             this.amount_box.Location = new System.Drawing.Point(653, 94);
             this.amount_box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.amount_box.Name = "amount_box";
-            this.amount_box.Size = new System.Drawing.Size(100, 22);
+            this.amount_box.Size = new System.Drawing.Size(121, 22);
             this.amount_box.TabIndex = 28;
             // 
             // details_box
@@ -345,7 +316,7 @@
             this.details_box.Location = new System.Drawing.Point(653, 158);
             this.details_box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.details_box.Name = "details_box";
-            this.details_box.Size = new System.Drawing.Size(100, 22);
+            this.details_box.Size = new System.Drawing.Size(121, 22);
             this.details_box.TabIndex = 32;
             // 
             // D_details
@@ -356,14 +327,6 @@
             this.D_details.Size = new System.Drawing.Size(49, 16);
             this.D_details.TabIndex = 31;
             this.D_details.Text = "Details";
-            // 
-            // type_box
-            // 
-            this.type_box.Location = new System.Drawing.Point(653, 124);
-            this.type_box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.type_box.Name = "type_box";
-            this.type_box.Size = new System.Drawing.Size(100, 22);
-            this.type_box.TabIndex = 30;
             // 
             // data_type
             // 
@@ -465,23 +428,15 @@
             this.GetDonorsByPaymentMethodButton.UseVisualStyleBackColor = true;
             this.GetDonorsByPaymentMethodButton.Click += new System.EventHandler(this.GetDonorsByPaymentMethodButton_Click);
             // 
-            // PaymentMethodTextBox
-            // 
-            this.PaymentMethodTextBox.Location = new System.Drawing.Point(45, 191);
-            this.PaymentMethodTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.PaymentMethodTextBox.Name = "PaymentMethodTextBox";
-            this.PaymentMethodTextBox.Size = new System.Drawing.Size(155, 22);
-            this.PaymentMethodTextBox.TabIndex = 46;
-            // 
             // PaymentMethodlabel
             // 
             this.PaymentMethodlabel.AutoSize = true;
             this.PaymentMethodlabel.Location = new System.Drawing.Point(64, 175);
             this.PaymentMethodlabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PaymentMethodlabel.Name = "PaymentMethodlabel";
-            this.PaymentMethodlabel.Size = new System.Drawing.Size(116, 16);
+            this.PaymentMethodlabel.Size = new System.Drawing.Size(108, 16);
             this.PaymentMethodlabel.TabIndex = 47;
-            this.PaymentMethodlabel.Text = "Payment Methode";
+            this.PaymentMethodlabel.Text = "Payment Method";
             // 
             // ID_label
             // 
@@ -504,6 +459,7 @@
             // 
             // ID_combo
             // 
+            this.ID_combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ID_combo.FormattingEnabled = true;
             this.ID_combo.Location = new System.Drawing.Point(109, 137);
             this.ID_combo.Name = "ID_combo";
@@ -523,6 +479,7 @@
             // 
             // ID_box
             // 
+            this.ID_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ID_box.FormattingEnabled = true;
             this.ID_box.Location = new System.Drawing.Point(653, 60);
             this.ID_box.Name = "ID_box";
@@ -531,6 +488,7 @@
             // 
             // Vol_ID_box
             // 
+            this.Vol_ID_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Vol_ID_box.FormattingEnabled = true;
             this.Vol_ID_box.Location = new System.Drawing.Point(653, 191);
             this.Vol_ID_box.Name = "Vol_ID_box";
@@ -539,6 +497,7 @@
             // 
             // Don_ID_box
             // 
+            this.Don_ID_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Don_ID_box.FormattingEnabled = true;
             this.Don_ID_box.Location = new System.Drawing.Point(653, 224);
             this.Don_ID_box.Name = "Don_ID_box";
@@ -567,22 +526,127 @@
             // 
             this.D_box.Location = new System.Drawing.Point(653, 283);
             this.D_box.Name = "D_box";
-            this.D_box.Size = new System.Drawing.Size(100, 22);
+            this.D_box.Size = new System.Drawing.Size(121, 22);
             this.D_box.TabIndex = 57;
+            // 
+            // Payment_text
+            // 
+            this.Payment_text.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Payment_text.FormattingEnabled = true;
+            this.Payment_text.Items.AddRange(new object[] {
+            "Cash",
+            "Visa",
+            "Credit"});
+            this.Payment_text.Location = new System.Drawing.Point(409, 159);
+            this.Payment_text.Name = "Payment_text";
+            this.Payment_text.Size = new System.Drawing.Size(175, 24);
+            this.Payment_text.TabIndex = 59;
+            // 
+            // PaymentMethodTextBox
+            // 
+            this.PaymentMethodTextBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PaymentMethodTextBox.FormattingEnabled = true;
+            this.PaymentMethodTextBox.Items.AddRange(new object[] {
+            "Cash",
+            "Visa",
+            "Credit"});
+            this.PaymentMethodTextBox.Location = new System.Drawing.Point(51, 195);
+            this.PaymentMethodTextBox.Name = "PaymentMethodTextBox";
+            this.PaymentMethodTextBox.Size = new System.Drawing.Size(135, 24);
+            this.PaymentMethodTextBox.TabIndex = 60;
+            // 
+            // type_box
+            // 
+            this.type_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.type_box.FormattingEnabled = true;
+            this.type_box.Items.AddRange(new object[] {
+            "Money",
+            "Food",
+            "Clothes"});
+            this.type_box.Location = new System.Drawing.Point(653, 127);
+            this.type_box.Name = "type_box";
+            this.type_box.Size = new System.Drawing.Size(121, 24);
+            this.type_box.TabIndex = 61;
             // 
             // S_box
             // 
+            this.S_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.S_box.FormattingEnabled = true;
+            this.S_box.Items.AddRange(new object[] {
+            "Pending",
+            "Assigned",
+            "Collected",
+            "Delivered"});
             this.S_box.Location = new System.Drawing.Point(653, 253);
             this.S_box.Name = "S_box";
-            this.S_box.Size = new System.Drawing.Size(100, 22);
-            this.S_box.TabIndex = 58;
+            this.S_box.Size = new System.Drawing.Size(121, 24);
+            this.S_box.TabIndex = 62;
+            // 
+            // Status_text
+            // 
+            this.Status_text.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Status_text.FormattingEnabled = true;
+            this.Status_text.Items.AddRange(new object[] {
+            "Pending",
+            "Assigned",
+            "Collected",
+            "Delivered"});
+            this.Status_text.Location = new System.Drawing.Point(409, 286);
+            this.Status_text.Name = "Status_text";
+            this.Status_text.Size = new System.Drawing.Size(174, 24);
+            this.Status_text.TabIndex = 63;
+            // 
+            // Available_text
+            // 
+            this.Available_text.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Available_text.FormattingEnabled = true;
+            this.Available_text.Items.AddRange(new object[] {
+            "Available Anytime",
+            "Not Available Currently",
+            "On Call"});
+            this.Available_text.Location = new System.Drawing.Point(409, 223);
+            this.Available_text.Name = "Available_text";
+            this.Available_text.Size = new System.Drawing.Size(175, 24);
+            this.Available_text.TabIndex = 64;
+            // 
+            // Skills_text
+            // 
+            this.Skills_text.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Skills_text.FormattingEnabled = true;
+            this.Skills_text.Items.AddRange(new object[] {
+            "Communication",
+            "Teamwork",
+            "Organization",
+            "Leadership",
+            "Problem-Solving"});
+            this.Skills_text.Location = new System.Drawing.Point(409, 193);
+            this.Skills_text.Name = "Skills_text";
+            this.Skills_text.Size = new System.Drawing.Size(174, 24);
+            this.Skills_text.TabIndex = 65;
+            // 
+            // Del_button
+            // 
+            this.Del_button.Location = new System.Drawing.Point(316, 377);
+            this.Del_button.Name = "Del_button";
+            this.Del_button.Size = new System.Drawing.Size(87, 33);
+            this.Del_button.TabIndex = 66;
+            this.Del_button.Text = "Delete";
+            this.Del_button.UseVisualStyleBackColor = true;
+            this.Del_button.Click += new System.EventHandler(this.Del_button_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Del_button);
+            this.Controls.Add(this.Skills_text);
+            this.Controls.Add(this.Available_text);
+            this.Controls.Add(this.Status_text);
             this.Controls.Add(this.S_box);
+            this.Controls.Add(this.type_box);
+            this.Controls.Add(this.PaymentMethodTextBox);
+            this.Controls.Add(this.Payment_text);
             this.Controls.Add(this.D_box);
             this.Controls.Add(this.D_label);
             this.Controls.Add(this.S_label);
@@ -594,7 +658,6 @@
             this.Controls.Add(this.Search_button);
             this.Controls.Add(this.ID_label);
             this.Controls.Add(this.PaymentMethodlabel);
-            this.Controls.Add(this.PaymentMethodTextBox);
             this.Controls.Add(this.GetDonorsByPaymentMethodButton);
             this.Controls.Add(this.don_name_lbl);
             this.Controls.Add(this.don_name_txt);
@@ -606,7 +669,6 @@
             this.Controls.Add(this.V_ID);
             this.Controls.Add(this.details_box);
             this.Controls.Add(this.D_details);
-            this.Controls.Add(this.type_box);
             this.Controls.Add(this.data_type);
             this.Controls.Add(this.amount_box);
             this.Controls.Add(this.D_amount);
@@ -617,15 +679,11 @@
             this.Controls.Add(this.Option_label);
             this.Controls.Add(this.Date_text);
             this.Controls.Add(this.Date_label);
-            this.Controls.Add(this.Status_text);
             this.Controls.Add(this.Status_label);
             this.Controls.Add(this.Address_text);
             this.Controls.Add(this.Address_label);
-            this.Controls.Add(this.Available_text);
             this.Controls.Add(this.Available_label);
-            this.Controls.Add(this.Skills_text);
             this.Controls.Add(this.Skills_label);
-            this.Controls.Add(this.Payment_text);
             this.Controls.Add(this.Payment_label);
             this.Controls.Add(this.Phone_text);
             this.Controls.Add(this.Phone_label);
@@ -658,14 +716,10 @@
         private System.Windows.Forms.Label Phone_label;
         private System.Windows.Forms.TextBox Phone_text;
         private System.Windows.Forms.Label Payment_label;
-        private System.Windows.Forms.TextBox Payment_text;
-        private System.Windows.Forms.TextBox Status_text;
         private System.Windows.Forms.Label Status_label;
         private System.Windows.Forms.TextBox Address_text;
         private System.Windows.Forms.Label Address_label;
-        private System.Windows.Forms.TextBox Available_text;
         private System.Windows.Forms.Label Available_label;
-        private System.Windows.Forms.TextBox Skills_text;
         private System.Windows.Forms.Label Skills_label;
         private System.Windows.Forms.TextBox Date_text;
         private System.Windows.Forms.Label Date_label;
@@ -678,7 +732,6 @@
         private System.Windows.Forms.TextBox amount_box;
         private System.Windows.Forms.TextBox details_box;
         private System.Windows.Forms.Label D_details;
-        private System.Windows.Forms.TextBox type_box;
         private System.Windows.Forms.Label data_type;
         private System.Windows.Forms.Label D_ID;
         private System.Windows.Forms.Label V_ID;
@@ -689,7 +742,6 @@
 		private System.Windows.Forms.TextBox don_name_txt;
 		private System.Windows.Forms.Label don_name_lbl;
 		private System.Windows.Forms.Button GetDonorsByPaymentMethodButton;
-		private System.Windows.Forms.TextBox PaymentMethodTextBox;
 		private System.Windows.Forms.Label PaymentMethodlabel;
         private System.Windows.Forms.Label ID_label;
         private System.Windows.Forms.Button Search_button;
@@ -701,7 +753,14 @@
         private System.Windows.Forms.Label S_label;
         private System.Windows.Forms.Label D_label;
         private System.Windows.Forms.TextBox D_box;
-        private System.Windows.Forms.TextBox S_box;
+        private System.Windows.Forms.ComboBox Payment_text;
+        private System.Windows.Forms.ComboBox PaymentMethodTextBox;
+        private System.Windows.Forms.ComboBox type_box;
+        private System.Windows.Forms.ComboBox S_box;
+        private System.Windows.Forms.ComboBox Status_text;
+        private System.Windows.Forms.ComboBox Available_text;
+        private System.Windows.Forms.ComboBox Skills_text;
+        private System.Windows.Forms.Button Del_button;
     }
 }
 
