@@ -539,7 +539,15 @@ namespace Project_SW
 
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("Inserted successfully into " + Categories.Text + " table.");
+                        OracleCommand getId = new OracleCommand();
+                        getId.Connection = conn;
+                        string sequenceName = tableName + "_seq";
+
+                        getId.CommandText = $"SELECT {sequenceName}.currval FROM dual";
+                        int newID = Convert.ToInt32(getId.ExecuteScalar());
+
+                        MessageBox.Show("Inserted successfully into " + Categories.Text + " table and your ID = " + newID);
+
                     }
                     else
                     {
