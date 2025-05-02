@@ -67,8 +67,8 @@ namespace Project_SW
             }
 			else if (Categories.Text == "Admin")
 			{
-				Option_box.Items.Add("view Donor");
-				Option_box.Items.Add("view Payment");
+				Option_box.Items.Add("View Donor");
+				Option_box.Items.Add("View Payment");
 			}
 			else if (Categories.Text == "Beneficiary")
             {
@@ -137,6 +137,7 @@ namespace Project_SW
         {
             ClearTextFields();
             HideVisibility();
+            dataGridView.ReadOnly = false;
             dataGridView.DataSource = null;
             if (Option_box.Text == "Insert")
             {
@@ -197,7 +198,7 @@ namespace Project_SW
                     }
                 }
             }
-            else if (Option_box.Text == "view Donor")
+            else if (Option_box.Text == "View Donor")
             {
 				
 				Email_label.Visible = true;
@@ -214,14 +215,15 @@ namespace Project_SW
                 ID_combo.Visible = true;
             }
 
-			else if (Option_box.Text == "view Payment")
+			else if (Option_box.Text == "View Payment")
 			{
 
 				GetDonorsByPaymentMethodButton.Visible = true;
 				PaymentMethodlabel.Visible = true;
 				PaymentMethodTextBox.Visible = true;
 				dataGridView.Visible = true;
-			}
+                dataGridView.ReadOnly = true;
+            }
 
 			else if (Option_box.Text == "Edit,Del")
             {
@@ -568,13 +570,13 @@ namespace Project_SW
             Option_box.SelectedIndex = Option_box.SelectedIndex;
             ID_combo.SelectedIndex = -1;
             ID_combo.Items.Clear();
-            if (Option_box.Text == "Search" || Option_box.Text == "view Donor")
+            if (Option_box.Text == "Search" || Option_box.Text == "View Donor")
             {
                 //Add ID Hereee
                 ID_combo.Items.Clear();
 
                 string table = Categories.Text;
-                if (Option_box.Text == "view Donor")
+                if (Option_box.Text == "View Donor")
                 {
                     table = "Donor";
                 }

@@ -97,6 +97,7 @@
             // 
             // Categories
             // 
+            this.Categories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Categories.FormattingEnabled = true;
             this.Categories.Items.AddRange(new object[] {
             "Donor",
@@ -253,6 +254,7 @@
             // 
             // Option_box
             // 
+            this.Option_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Option_box.FormattingEnabled = true;
             this.Option_box.Location = new System.Drawing.Point(109, 97);
             this.Option_box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -264,12 +266,12 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(247, 43);
+            this.dataGridView.Location = new System.Drawing.Point(247, 40);
             this.dataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(539, 330);
+            this.dataGridView.Size = new System.Drawing.Size(539, 331);
             this.dataGridView.TabIndex = 23;
             // 
             // button2
@@ -457,6 +459,7 @@
             // 
             // ID_combo
             // 
+            this.ID_combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ID_combo.FormattingEnabled = true;
             this.ID_combo.Location = new System.Drawing.Point(109, 137);
             this.ID_combo.Name = "ID_combo";
@@ -476,6 +479,7 @@
             // 
             // ID_box
             // 
+            this.ID_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ID_box.FormattingEnabled = true;
             this.ID_box.Location = new System.Drawing.Point(653, 60);
             this.ID_box.Name = "ID_box";
@@ -484,6 +488,7 @@
             // 
             // Vol_ID_box
             // 
+            this.Vol_ID_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Vol_ID_box.FormattingEnabled = true;
             this.Vol_ID_box.Location = new System.Drawing.Point(653, 191);
             this.Vol_ID_box.Name = "Vol_ID_box";
@@ -492,6 +497,7 @@
             // 
             // Don_ID_box
             // 
+            this.Don_ID_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Don_ID_box.FormattingEnabled = true;
             this.Don_ID_box.Location = new System.Drawing.Point(653, 224);
             this.Don_ID_box.Name = "Don_ID_box";
@@ -525,6 +531,7 @@
             // 
             // Payment_text
             // 
+            this.Payment_text.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Payment_text.FormattingEnabled = true;
             this.Payment_text.Items.AddRange(new object[] {
             "Cash",
@@ -537,6 +544,7 @@
             // 
             // PaymentMethodTextBox
             // 
+            this.PaymentMethodTextBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PaymentMethodTextBox.FormattingEnabled = true;
             this.PaymentMethodTextBox.Items.AddRange(new object[] {
             "Cash",
@@ -549,6 +557,7 @@
             // 
             // type_box
             // 
+            this.type_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.type_box.FormattingEnabled = true;
             this.type_box.Items.AddRange(new object[] {
             "Money",
@@ -561,6 +570,7 @@
             // 
             // S_box
             // 
+            this.S_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.S_box.FormattingEnabled = true;
             this.S_box.Items.AddRange(new object[] {
             "Pending",
@@ -574,6 +584,7 @@
             // 
             // Status_text
             // 
+            this.Status_text.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Status_text.FormattingEnabled = true;
             this.Status_text.Items.AddRange(new object[] {
             "Pending",
@@ -587,6 +598,7 @@
             // 
             // Available_text
             // 
+            this.Available_text.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Available_text.FormattingEnabled = true;
             this.Available_text.Items.AddRange(new object[] {
             "Available Anytime",
@@ -599,6 +611,7 @@
             // 
             // Skills_text
             // 
+            this.Skills_text.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skills_text.FormattingEnabled = true;
             this.Skills_text.Items.AddRange(new object[] {
             "Communication",
@@ -615,7 +628,7 @@
             // 
             this.Del_button.Location = new System.Drawing.Point(316, 377);
             this.Del_button.Name = "Del_button";
-            this.Del_button.Size = new System.Drawing.Size(80, 33);
+            this.Del_button.Size = new System.Drawing.Size(87, 33);
             this.Del_button.TabIndex = 66;
             this.Del_button.Text = "Delete";
             this.Del_button.UseVisualStyleBackColor = true;
