@@ -130,6 +130,7 @@ namespace Project_SW
             S_box.Visible = false;
             D_label.Visible = false;
             D_box.Visible = false;
+            Del_button.Visible = false;
 		}
 
         private void UpdateControlVisibility()
@@ -229,7 +230,7 @@ namespace Project_SW
                 Name_label.Visible = true;
                 Name_text.Visible = true;
                 Search_button.Visible = true;
-
+                Del_button.Visible = true;
             }
             else if (Option_box.Text == "Donate")
             {
@@ -1003,6 +1004,18 @@ namespace Project_SW
             Form2 form2 = new Form2();
             form2.Show();
             this.Hide();
+        }
+
+        private void Del_button_Click(object sender, EventArgs e)
+        {
+            if (dataGridView.SelectedRows.Count > 0)
+            {
+                dataGridView.Rows.RemoveAt(dataGridView.SelectedRows[0].Index);
+            }
+            else
+            {
+                MessageBox.Show("Please select a row to delete.");
+            }
         }
     }
 }

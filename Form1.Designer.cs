@@ -82,6 +82,7 @@
             this.Status_text = new System.Windows.Forms.ComboBox();
             this.Available_text = new System.Windows.Forms.ComboBox();
             this.Skills_text = new System.Windows.Forms.ComboBox();
+            this.Del_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -268,7 +269,7 @@
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(539, 382);
+            this.dataGridView.Size = new System.Drawing.Size(539, 330);
             this.dataGridView.TabIndex = 23;
             // 
             // button2
@@ -610,11 +611,22 @@
             this.Skills_text.Size = new System.Drawing.Size(174, 24);
             this.Skills_text.TabIndex = 65;
             // 
+            // Del_button
+            // 
+            this.Del_button.Location = new System.Drawing.Point(316, 377);
+            this.Del_button.Name = "Del_button";
+            this.Del_button.Size = new System.Drawing.Size(80, 33);
+            this.Del_button.TabIndex = 66;
+            this.Del_button.Text = "Delete";
+            this.Del_button.UseVisualStyleBackColor = true;
+            this.Del_button.Click += new System.EventHandler(this.Del_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Del_button);
             this.Controls.Add(this.Skills_text);
             this.Controls.Add(this.Available_text);
             this.Controls.Add(this.Status_text);
@@ -735,6 +747,7 @@
         private System.Windows.Forms.ComboBox Status_text;
         private System.Windows.Forms.ComboBox Available_text;
         private System.Windows.Forms.ComboBox Skills_text;
+        private System.Windows.Forms.Button Del_button;
     }
 }
 
