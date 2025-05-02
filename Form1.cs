@@ -246,6 +246,7 @@ namespace Project_SW
                 S_box.Visible = true;
                 D_label.Visible = true;
                 D_box.Visible = true;
+                D_box.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 ID_box.SelectedIndex = -1;
                 ID_box.Items.Clear();
                
@@ -280,6 +281,7 @@ namespace Project_SW
                 S_box.Visible = true;
                 D_label.Visible = true;
                 D_box.Visible = true;
+                D_box.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 Vol_ID_box.SelectedIndex = -1;
                 Vol_ID_box.Items.Clear();
 
@@ -333,6 +335,7 @@ namespace Project_SW
                 S_box.Visible = true;
                 D_label.Visible = true;
                 D_box.Visible = true;
+                D_box.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 ID_box.SelectedIndex = -1;
                 ID_box.Items.Clear();
 
@@ -609,7 +612,7 @@ namespace Project_SW
             if (string.IsNullOrWhiteSpace(ID_box.Text) || string.IsNullOrWhiteSpace(type_box.Text) ||
                 string.IsNullOrWhiteSpace(S_box.Text) || string.IsNullOrWhiteSpace(D_box.Text))
             {
-                MessageBox.Show("Please select beneficiary and aid type.");
+                MessageBox.Show("Please fill in all fields.");
                 return;
             }
 
@@ -623,7 +626,7 @@ namespace Project_SW
                 int count = Convert.ToInt32(checkCmd.ExecuteScalar());
                 if (count == 0)
                 {
-                    MessageBox.Show("This Beneficiary ID does not exist.");
+                    MessageBox.Show("This Beneficiary ID not found.");
                     conn.Close();
                     return;
                 }
@@ -631,7 +634,7 @@ namespace Project_SW
             OracleCommand cmd = new OracleCommand("INSERT INTO Aid_Request (Beneficiary_ID, Aid_Type,Request_Date,Status) VALUES (:bid, :atype, :bdate, :bstatus)", conn);
                 cmd.Parameters.Add("bid", ID_box.Text);
                 cmd.Parameters.Add("atype", type_box.Text);
-                cmd.Parameters.Add("bdate", D_box.Text);
+                cmd.Parameters.Add("bdate", Convert.ToDateTime(D_box.Text));
                 cmd.Parameters.Add("bstatus", S_box.Text);
 
             int rows = cmd.ExecuteNonQuery();
@@ -669,14 +672,26 @@ namespace Project_SW
             conn = new OracleConnection(ordb);
                 conn.Open();
 
-                OracleCommand cmd = new OracleCommand("INSERT INTO Donation (Donor_ID, Amount, Donation_Type, Payment_Details, Donation_Date, Status) VALUES (:donor_id, :amount, :type, :details, :date, :status)", conn);
+            OracleCommand checkCmd = new OracleCommand("SELECT COUNT(*) FROM Donation WHERE Donor_ID = :id", conn);
+            checkCmd.Parameters.Add("id", ID_box.Text);
+
+            int count = Convert.ToInt32(checkCmd.ExecuteScalar());
+            if (count == 0)
+            {
+                MessageBox.Show("This Donation ID not found.");
+                conn.Dispose();
+                return;
+            }
+
+            OracleCommand cmd = new OracleCommand("INSERT INTO Donation (Donor_ID, Amount, Donation_Type, Payment_Details, Status, Donation_Date)" +
+                    " VALUES (:donor_id, :amount, :type, :details, :status, :adate)", conn);
 
                 cmd.Parameters.Add("donor_id", ID_box.Text);
                 cmd.Parameters.Add("amount", Convert.ToDecimal(amount_box.Text));
                 cmd.Parameters.Add("type", type_box.Text);
                 cmd.Parameters.Add("details", details_box.Text);
-                cmd.Parameters.Add("date", D_box.Text);
                 cmd.Parameters.Add("status", S_box.Text);
+                cmd.Parameters.Add("adate", Convert.ToDateTime(D_box.Text));
 
             int rows = cmd.ExecuteNonQuery();
                 if (rows > 0)
@@ -699,7 +714,7 @@ namespace Project_SW
             if (string.IsNullOrWhiteSpace(Vol_ID_box.Text) || string.IsNullOrWhiteSpace(Don_ID_box.Text) ||
                 string.IsNullOrWhiteSpace(S_box.Text) || string.IsNullOrWhiteSpace(D_box.Text))
             {
-                MessageBox.Show("Please select both Volunteer and Donor.");
+                MessageBox.Show("Please fill in all fields.");
                 return;
             }
 
@@ -729,11 +744,11 @@ namespace Project_SW
                     return;
                 }
 
-            OracleCommand cmd = new OracleCommand("INSERT INTO Volunteer_Task (Volunteer_ID, Donation_ID, Status, Update_Date) VALUES (:vid, :did, :status, :date)", conn);
+            OracleCommand cmd = new OracleCommand("INSERT INTO Volunteer_Task (Volunteer_ID, Donation_ID, Status, Update_Date) VALUES (:vid, :did, :status, :adate)", conn);
                 cmd.Parameters.Add("vid", Vol_ID_box.Text);
                 cmd.Parameters.Add("did", Don_ID_box.Text);
                 cmd.Parameters.Add("status", S_box.Text);
-                cmd.Parameters.Add("date", D_box.Text);
+                cmd.Parameters.Add("adate", Convert.ToDateTime(D_box.Text));
 
             int rows = cmd.ExecuteNonQuery();
                 if (rows > 0)
@@ -963,9 +978,11 @@ namespace Project_SW
                 }
                 adapter = new OracleDataAdapter(cmdstr, ordb);
                 ds = new DataSet();
-                adapter.Fill(ds);
                 adapter.SelectCommand.Parameters.Add("name", Name_text.Text);
-                dataGridView.DataSource = ds.Tables[0];
+                adapter.Fill(ds);
+                dataGridView.DataSource = ds.Tables[0];               
+                dataGridView.Columns[0].ReadOnly = true;
+                            
             }
         }
         private void ClearTextFields()
