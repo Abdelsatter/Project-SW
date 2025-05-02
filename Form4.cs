@@ -41,5 +41,12 @@ namespace Project_SW
             CR.SetParameterValue(0, comboBox1.Text);
             crystalReportViewer1.ReportSource = CR;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.Show();
+            this.Hide();
+        }
     }
 }

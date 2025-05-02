@@ -682,7 +682,7 @@ namespace Project_SW
             conn = new OracleConnection(ordb);
                 conn.Open();
 
-            OracleCommand checkCmd = new OracleCommand("SELECT COUNT(*) FROM Donation WHERE Donor_ID = :id", conn);
+            OracleCommand checkCmd = new OracleCommand("SELECT COUNT(*) FROM Donor WHERE Donor_ID = :id", conn);
             checkCmd.Parameters.Add("id", ID_box.Text);
 
             int count = Convert.ToInt32(checkCmd.ExecuteScalar());
