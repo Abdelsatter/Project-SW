@@ -117,8 +117,7 @@ namespace Project_SW
 			don_name_txt.Visible = false;
 			don_name_lbl.Visible = false;
 			GetDonorDetailsButton.Visible = false;
-			DonorIDTextBox.Visible = false;
-			DonorIDlabel.Visible = false;
+			
 
 			GetDonorsByPaymentMethodButton.Visible = false;
 			PaymentMethodlabel.Visible = false;
@@ -127,13 +126,17 @@ namespace Project_SW
             Search_button.Visible = false;
             ID_label.Visible = false;   
             ID_combo.Visible = false;
+            S_label.Visible = false;
+            S_box.Visible = false;
+            D_label.Visible = false;
+            D_box.Visible = false;
 		}
 
         private void UpdateControlVisibility()
         {
             ClearTextFields();
             HideVisibility();
-
+            dataGridView.DataSource = null;
             if (Option_box.Text == "Insert")
             {
 
@@ -206,9 +209,9 @@ namespace Project_SW
 				don_name_txt.Visible = true;
 				don_name_lbl.Visible = true;
 				GetDonorDetailsButton.Visible = true;
-				DonorIDTextBox.Visible = true;
-				DonorIDlabel.Visible = true;
-			}
+                ID_label.Visible = true;
+                ID_combo.Visible = true;
+            }
 
 			else if (Option_box.Text == "view Payment")
 			{
@@ -239,6 +242,32 @@ namespace Project_SW
                 type_box.Visible = true;
                 D_details.Visible = true;
                 details_box.Visible = true;
+                S_label.Visible = true;
+                S_box.Visible = true;
+                D_label.Visible = true;
+                D_box.Visible = true;
+                ID_box.SelectedIndex = -1;
+                ID_box.Items.Clear();
+               
+                    //Add ID Hereee
+                    ID_box.Items.Clear();
+
+                  
+                    conn = new OracleConnection(ordb);
+                    conn.Open();
+
+                    OracleCommand cmd = new OracleCommand("SELECT Donor_ID FROM Donor", conn);
+                    OracleDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        ID_box.Items.Add(dr[0].ToString());
+                    }
+
+                    dr.Close();
+                    conn.Dispose();
+
+                
             }
             else if (Option_box.Text == "Assign")
             {
@@ -247,6 +276,51 @@ namespace Project_SW
                 D_ID.Visible = true;
                 V_ID.Visible = true;
                 Don_ID_box.Visible = true;
+                S_label.Visible = true;
+                S_box.Visible = true;
+                D_label.Visible = true;
+                D_box.Visible = true;
+                Vol_ID_box.SelectedIndex = -1;
+                Vol_ID_box.Items.Clear();
+
+                //Add ID Hereee
+                Vol_ID_box.Items.Clear();
+
+
+                conn = new OracleConnection(ordb);
+                conn.Open();
+
+                OracleCommand cmd = new OracleCommand("SELECT Volunteer_ID FROM Volunteer", conn);
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    Vol_ID_box.Items.Add(dr[0].ToString());
+                }
+
+                dr.Close();
+                conn.Dispose();
+                /////////////////////////////////////////////////////////////////////////////////////
+                Don_ID_box.SelectedIndex = -1;
+                Don_ID_box.Items.Clear();
+
+                //Add ID Hereee
+                Don_ID_box.Items.Clear();
+
+
+                conn = new OracleConnection(ordb);
+                conn.Open();
+
+                OracleCommand cmd2 = new OracleCommand("SELECT Donation_ID FROM Donation", conn);
+                OracleDataReader dr2 = cmd2.ExecuteReader();
+
+                while (dr2.Read())
+                {
+                    Don_ID_box.Items.Add(dr2[0].ToString());
+                }
+
+                dr2.Close();
+                conn.Dispose();
             }
             else if (Option_box.Text == "Request")
             {
@@ -255,6 +329,30 @@ namespace Project_SW
                 ID_box.Visible = true;
                 data_type.Visible = true;
                 type_box.Visible = true;
+                S_label.Visible = true;
+                S_box.Visible = true;
+                D_label.Visible = true;
+                D_box.Visible = true;
+                ID_box.SelectedIndex = -1;
+                ID_box.Items.Clear();
+
+                //Add ID Hereee
+                ID_box.Items.Clear();
+
+
+                conn = new OracleConnection(ordb);
+                conn.Open();
+
+                OracleCommand cmd = new OracleCommand("SELECT Beneficiary_ID FROM Beneficiary", conn);
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    ID_box.Items.Add(dr[0].ToString());
+                }
+
+                dr.Close();
+                conn.Dispose();
             }
             else if (Option_box.Text == "Search")
             {
@@ -466,12 +564,16 @@ namespace Project_SW
             Option_box.SelectedIndex = Option_box.SelectedIndex;
             ID_combo.SelectedIndex = -1;
             ID_combo.Items.Clear();
-            if (Option_box.Text == "Search")
+            if (Option_box.Text == "Search" || Option_box.Text == "view Donor")
             {
                 //Add ID Hereee
                 ID_combo.Items.Clear();
 
                 string table = Categories.Text;
+                if (Option_box.Text == "view Donor")
+                {
+                    table = "Donor";
+                }
                 string idColumn = table + "_ID";
 
 
@@ -504,7 +606,46 @@ namespace Project_SW
         private void ben_button_Click(object sender, EventArgs e)
         {
             //Request_Aid Code Here/////////////////
+            if (string.IsNullOrWhiteSpace(ID_box.Text) || string.IsNullOrWhiteSpace(type_box.Text) ||
+                string.IsNullOrWhiteSpace(S_box.Text) || string.IsNullOrWhiteSpace(D_box.Text))
+            {
+                MessageBox.Show("Please select beneficiary and aid type.");
+                return;
+            }
 
+            
+                conn = new OracleConnection(ordb);
+                conn.Open();
+
+                OracleCommand checkCmd = new OracleCommand("SELECT COUNT(*) FROM Beneficiary WHERE Beneficiary_ID = :id", conn);
+                checkCmd.Parameters.Add("id", ID_box.Text);
+
+                int count = Convert.ToInt32(checkCmd.ExecuteScalar());
+                if (count == 0)
+                {
+                    MessageBox.Show("This Beneficiary ID does not exist.");
+                    conn.Close();
+                    return;
+                }
+
+            OracleCommand cmd = new OracleCommand("INSERT INTO Aid_Request (Beneficiary_ID, Aid_Type,Request_Date,Status) VALUES (:bid, :atype, :bdate, :bstatus)", conn);
+                cmd.Parameters.Add("bid", ID_box.Text);
+                cmd.Parameters.Add("atype", type_box.Text);
+                cmd.Parameters.Add("bdate", D_box.Text);
+                cmd.Parameters.Add("bstatus", S_box.Text);
+
+            int rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+                    MessageBox.Show("Aid Request Submitted.");
+                }
+                else
+                {
+                    MessageBox.Show("Aid Request Failed.");
+                }
+
+                conn.Dispose();
+            
 
 
         }
@@ -512,21 +653,107 @@ namespace Project_SW
         private void D_button_Click(object sender, EventArgs e)
         {
             //Donation Code Here/////////////////
+            if (string.IsNullOrWhiteSpace(ID_box.Text) || string.IsNullOrWhiteSpace(amount_box.Text) ||
+                string.IsNullOrWhiteSpace(type_box.Text) || string.IsNullOrWhiteSpace(details_box.Text) ||
+                string.IsNullOrWhiteSpace(S_box.Text) || string.IsNullOrWhiteSpace(D_box.Text))
+            {
+                MessageBox.Show("Please fill in all donation fields.");
+                return;
+            }
 
+            if (!decimal.TryParse(amount_box.Text, out decimal amount) || amount <= 0)
+            {
+                MessageBox.Show("Please enter a valid donation amount.");
+                return;
+            }
+            conn = new OracleConnection(ordb);
+                conn.Open();
+
+                OracleCommand cmd = new OracleCommand("INSERT INTO Donation (Donor_ID, Amount, Donation_Type, Payment_Details, Donation_Date, Status) VALUES (:donor_id, :amount, :type, :details, :date, :status)", conn);
+
+                cmd.Parameters.Add("donor_id", ID_box.Text);
+                cmd.Parameters.Add("amount", Convert.ToDecimal(amount_box.Text));
+                cmd.Parameters.Add("type", type_box.Text);
+                cmd.Parameters.Add("details", details_box.Text);
+                cmd.Parameters.Add("date", D_box.Text);
+                cmd.Parameters.Add("status", S_box.Text);
+
+            int rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+                    MessageBox.Show("Donation Recorded Successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Donation Failed.");
+                }
+
+                conn.Dispose();
+           
 
         }
 
         private void assi_button_Click(object sender, EventArgs e)
         {
             //Assign Code Here/////////////////
+            if (string.IsNullOrWhiteSpace(Vol_ID_box.Text) || string.IsNullOrWhiteSpace(Don_ID_box.Text) ||
+                string.IsNullOrWhiteSpace(S_box.Text) || string.IsNullOrWhiteSpace(D_box.Text))
+            {
+                MessageBox.Show("Please select both Volunteer and Donor.");
+                return;
+            }
 
+            
+                conn = new OracleConnection(ordb);
+                conn.Open();
+
+                OracleCommand checkVol = new OracleCommand("SELECT COUNT(*) FROM Volunteer WHERE Volunteer_ID = :vid", conn);
+                checkVol.Parameters.Add("vid", Vol_ID_box.Text);
+                int volExists = Convert.ToInt32(checkVol.ExecuteScalar());
+
+                if (volExists == 0)
+                {
+                    MessageBox.Show("Volunteer ID not found.");
+                    conn.Dispose();
+                    return;
+                }
+
+                OracleCommand checkDon = new OracleCommand("SELECT COUNT(*) FROM Donation WHERE Donation_ID = :did", conn);
+                checkDon.Parameters.Add("did", Don_ID_box.Text);
+                int donExists = Convert.ToInt32(checkDon.ExecuteScalar());
+
+                if (donExists == 0)
+                {
+                    MessageBox.Show("Donation ID not found.");
+                    conn.Dispose();
+                    return;
+                }
+
+            OracleCommand cmd = new OracleCommand("INSERT INTO Volunteer_Task (Volunteer_ID, Donation_ID, Status, Update_Date) VALUES (:vid, :did, :status, :date)", conn);
+                cmd.Parameters.Add("vid", Vol_ID_box.Text);
+                cmd.Parameters.Add("did", Don_ID_box.Text);
+                cmd.Parameters.Add("status", S_box.Text);
+                cmd.Parameters.Add("date", D_box.Text);
+
+            int rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+                    MessageBox.Show("Task Assigned Successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Assignment Failed.");
+                }
+
+                conn.Dispose();
+           
 
 
         }
 
 		private void GetDonorDetailsButton_Click(object sender, EventArgs e)
 		{
-			string donorID = DonorIDTextBox.Text; // Assuming there's a textbox for Donor ID
+			string donorID = ID_combo.Text; // Assuming there's a textbox for Donor ID
 			if (!string.IsNullOrEmpty(donorID))
 			{
 				OracleConnection conn = new OracleConnection(ordb);
@@ -568,9 +795,9 @@ namespace Project_SW
 				Phone_text.Visible = true;
 				Phone_text.Text = pPhone.Value.ToString();
 
-				DonorIDlabel.Visible = true;
-				DonorIDTextBox.Visible = true;
-				DonorIDTextBox.Text = donorID;
+				//DonorIDlabel.Visible = true;
+				//DonorIDTextBox.Visible = true;
+				//DonorIDTextBox.Text = donorID;
 
 				Payment_label.Visible = true;
 				Payment_text.Visible = true;
@@ -692,7 +919,7 @@ namespace Project_SW
             else if (Option_box.Text == "Edit,Del")
             {
                 //show Data Code Here////////////////////////////
-                //string constr = "Data source=orcl;user Id=scott;password=tiger;";
+               
                 string cmdstr = "";
                 if (Categories.Text == "Volunteer")
                 {
@@ -737,6 +964,7 @@ namespace Project_SW
                 adapter = new OracleDataAdapter(cmdstr, ordb);
                 ds = new DataSet();
                 adapter.Fill(ds);
+                adapter.SelectCommand.Parameters.Add("name", Name_text.Text);
                 dataGridView.DataSource = ds.Tables[0];
             }
         }
@@ -751,6 +979,13 @@ namespace Project_SW
             Address_text.Text = "";
             Status_text.Text = "";
             Date_text.Text = "";
+        }
+
+        private void Back_button_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.Show();
+            this.Hide();
         }
     }
 }
