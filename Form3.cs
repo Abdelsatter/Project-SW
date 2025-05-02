@@ -32,19 +32,9 @@ namespace Project_SW
         private void button1_Click(object sender, EventArgs e)
         {
             CR.SetParameterValue(0, comboBox1.Text);
-            CR.SetParameterValue(1, Convert.ToDateTime(textBox1));
-            CR.SetParameterValue(2, Convert.ToDateTime(textBox2));
+            CR.SetParameterValue(1, Convert.ToDateTime(dateTimePicker1));
+            CR.SetParameterValue(2, Convert.ToDateTime(dateTimePicker2));
             crystalReportViewer1.ReportSource = CR;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

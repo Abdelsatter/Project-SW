@@ -17,7 +17,7 @@ namespace Project_SW
     public partial class Form1 : Form
     {
 
-        string ordb = "Data Source = orcl;User Id = scott;Password = tiger;";
+        string ordb = "Data Source = orcle;User Id = scott;Password = tiger;";
         OracleConnection conn;
 
         OracleDataAdapter adapter;

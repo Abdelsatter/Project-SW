@@ -106,7 +106,7 @@ namespace Project_SW {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Donation_Status {
+        public CrystalDecisions.Shared.IParameterField Parameter_StartDate_Parameter {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -114,7 +114,7 @@ namespace Project_SW {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_StartDate_Parameter {
+        public CrystalDecisions.Shared.IParameterField Parameter_EndDate_Parameter {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }
@@ -122,7 +122,7 @@ namespace Project_SW {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_EndDate_Parameter {
+        public CrystalDecisions.Shared.IParameterField Parameter_Donation_Type {
             get {
                 return this.DataDefinition.ParameterFields[2];
             }
